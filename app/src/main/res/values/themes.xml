@@ -20,4 +20,13 @@
         <item name="android:textColorPrimary">@color/black</item>
     </style>
 
+    <style name="Theme.LiveAndHealth.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.LiveAndHealth.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.LiveAndHealth.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

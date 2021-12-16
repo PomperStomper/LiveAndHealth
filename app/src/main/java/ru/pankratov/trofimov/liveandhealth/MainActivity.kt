@@ -1,5 +1,7 @@
 package ru.pankratov.trofimov.liveandhealth
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -43,6 +45,26 @@ class MainActivity : AppCompatActivity() {
         ft.replace(R.id.fragment_main, fragment)
         ft.commit()
 
+    }
+
+    fun playActivity(c0: Int) {
+        when (c0) {
+            0 -> {
+                val activity = EyesActivity()
+                val intent = Intent(this, activity::class.java)
+                startActivity(intent)
+            }
+            1 -> {
+                val activity = MeditationActivity()
+                val intent = Intent(this, activity::class.java)
+                startActivity(intent)
+            }
+            2 -> {
+                val activity = BreathActivity()
+                val intent = Intent(this, activity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     companion object MainObject {

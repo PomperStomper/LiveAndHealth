@@ -1,5 +1,6 @@
 package ru.pankratov.trofimov.liveandhealth.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +18,7 @@ import ru.pankratov.trofimov.liveandhealth.models.ListMain
 class HomeFragment : Fragment() {
 
     private lateinit var mlistMain: ListView
-    private var workuotlist = arrayListOf<ListMain>()
+    private var workoutlist = arrayListOf<ListMain>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +38,7 @@ class HomeFragment : Fragment() {
             value.image = drawableList[i]
             value.title = mMainListArray[i]
             value.discription = mMainListDiscArray[i]
-            workuotlist.add(value)
+            workoutlist.add(value)
         }
 
         mlistMain = inflatedView.findViewById(R.id.listViewMain)
@@ -46,12 +47,16 @@ class HomeFragment : Fragment() {
         mlistMain.smoothScrollToPosition(n)
         // адаптер
         val cont = requireActivity().baseContext
-        val mAdapter = ListMainAdapter(workuotlist, cont)
+        val mAdapter = ListMainAdapter(workoutlist, cont)
         mlistMain.adapter = mAdapter
 
         // нажатие на список
         mlistMain.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
-            Toast.makeText(context, "нажал $i", Toast.LENGTH_SHORT).show()
+            when (i) {
+                0 -> (activity as MainActivity?)?.playActivity(0)
+                1 -> (activity as MainActivity?)?.playActivity(1)
+                2 -> (activity as MainActivity?)?.playActivity(2)
+            }
         }
 
         return inflatedView
