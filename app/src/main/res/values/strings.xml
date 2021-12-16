@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">LiveAndHealth</string>
+
+    <string name="main_text">главная</string>
+    <string name="statistics_text">статистика</string>
+    <string name="settings_text">настройки</string>
+
+
+    <string-array name="main_list_array">
+        <item>Упражнения для глаз</item>
+        <item>Медитации для эмоционального здоровья</item>
+        <item>Упражнения для дыхания</item>
+    </string-array>
+
+    <string-array name="main_list_discription_array">
+        <item>10 упражнений, которые помогу улучшить зрение и снять усталость глаз</item>
+        <item>Помогают снять стресс, улучшить сон и восстановить хуй знает что ещё</item>
+        <item>Гимнастики дыхания улучшающие кровобращение, поднимающие тонус</item>
+    </string-array>
+
+
+
+
+</resources>
