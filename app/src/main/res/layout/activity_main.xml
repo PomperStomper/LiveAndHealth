@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_1"
+    android:background="@color/white"
     tools:context=".MainActivity"
     android:orientation="vertical">
 
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/blue_10"
+        android:background="@color/blue_800"
         android:orientation="horizontal" >
 
         <androidx.appcompat.widget.AppCompatButton
@@ -30,7 +30,7 @@
             android:paddingVertical="10dp"
             android:layout_marginTop="1dp"
             android:layout_gravity="center"
-            android:textColor="@color/blue_400"
+            android:textColor="@color/white"
             android:text="@string/main_text"
             android:textSize="10sp"
             android:background="@drawable/selector_btn_main"
@@ -45,7 +45,7 @@
             android:layout_marginTop="1dp"
             android:paddingVertical="10dp"
             android:layout_gravity="center"
-            android:textColor="@color/blue_400"
+            android:textColor="@color/white"
             android:text="@string/statistics_text"
             android:textSize="10sp"
             android:background="@drawable/selector_btn_main"
@@ -60,7 +60,7 @@
                 android:layout_marginTop="1dp"
                 android:paddingVertical="10dp"
                 android:layout_gravity="center"
-                android:textColor="@color/blue_400"
+                android:textColor="@color/white"
                 android:text="@string/settings_text"
                 android:textSize="10sp"
                 android:background="@drawable/selector_btn_main"

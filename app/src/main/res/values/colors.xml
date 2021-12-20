@@ -8,7 +8,10 @@
     <color name="blue_200">#03B6FC</color>
     <color name="blue_10">#C7ECF9</color>
     <color name="blue_1">#EEF7F9</color>
-    <color name="blue_10_trans">#7FC7ECF9</color>
+
+    <color name="blue_10_trans">#52C7ECF9</color>
+
+    <color name="yellow_1">#FF9200</color>
 
     <color name="white">#FFFFFFFF</color>
     <color name="grey_dark">#504F4F</color>

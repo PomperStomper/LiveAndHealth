@@ -1,23 +1,20 @@
 package ru.pankratov.trofimov.liveandhealth
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.WindowManager
-import android.widget.AdapterView
-import android.widget.ListView
 import androidx.fragment.app.Fragment
-import ru.pankratov.trofimov.liveandhealth.adapters.ListMainAdapter
 import ru.pankratov.trofimov.liveandhealth.fragments.HomeFragment
 import ru.pankratov.trofimov.liveandhealth.fragments.SettingsFragment
 import ru.pankratov.trofimov.liveandhealth.fragments.StatisticsFragment
-import ru.pankratov.trofimov.liveandhealth.models.ListMain
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        supportActionBar?.hide()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
