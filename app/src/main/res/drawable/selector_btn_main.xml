@@ -4,18 +4,18 @@
         android:state_pressed="true">
         <shape android:shape="rectangle" android:padding="10dp">
             <gradient
-                android:startColor="@color/white"
-                android:centerColor="@color/blue_10"
-                android:endColor="@color/white"
+                android:startColor="@color/blue_800"
+                android:centerColor="@color/blue_10_trans"
+                android:endColor="@color/blue_800"
                 android:angle="90" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle" android:padding="10dp">
             <gradient
-                android:startColor="@color/blue_10_trans"
-                android:centerColor="@color/blue_10_trans"
-                android:endColor="@color/blue_10_trans"
+                android:startColor="@color/blue_800"
+                android:centerColor="@color/blue_800"
+                android:endColor="@color/blue_800"
                 android:angle="90" />
         </shape>
     </item>
