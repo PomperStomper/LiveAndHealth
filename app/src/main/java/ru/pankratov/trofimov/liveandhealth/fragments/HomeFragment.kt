@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import ru.pankratov.trofimov.liveandhealth.MainActivity
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.DRAWABLE_LIST_IMAGE_MAIN
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.adapters.ListMainAdapter
 import ru.pankratov.trofimov.liveandhealth.models.ListMain
@@ -16,7 +17,7 @@ import ru.pankratov.trofimov.liveandhealth.models.ListMain
 class HomeFragment : Fragment() {
 
     private lateinit var mlistMain: ListView
-    private var workoutlist = arrayListOf<ListMain>()
+    private var workoutFragmentlist = arrayListOf<ListMain>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,10 +34,10 @@ class HomeFragment : Fragment() {
         // добавляем в список картинки и названия
         for (i in mMainListArray.indices) {
             val value = ListMain()
-            value.image = drawableList[i]
+            value.image = DRAWABLE_LIST_IMAGE_MAIN[i]
             value.title = mMainListArray[i]
             value.discription = mMainListDiscArray[i]
-            workoutlist.add(value)
+            workoutFragmentlist.add(value)
         }
 
         mlistMain = inflatedView.findViewById(R.id.listViewMain)
@@ -45,7 +46,7 @@ class HomeFragment : Fragment() {
         mlistMain.smoothScrollToPosition(n)
         // адаптер
         val cont = requireActivity().baseContext
-        val mAdapter = ListMainAdapter(workoutlist, cont)
+        val mAdapter = ListMainAdapter(workoutFragmentlist, cont)
         mlistMain.adapter = mAdapter
 
         // нажатие на список
@@ -58,13 +59,5 @@ class HomeFragment : Fragment() {
         }
 
         return inflatedView
-    }
-
-    companion object {
-        val drawableList = arrayListOf(
-            R.drawable.eyes,
-            R.drawable.meditation,
-            R.drawable.breath
-        )
     }
 }

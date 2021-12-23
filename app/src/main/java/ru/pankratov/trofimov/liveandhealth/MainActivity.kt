@@ -45,30 +45,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun playActivity(c0: Int) {
-        when (c0) {
-            0 -> {
-                val activity = EyesActivity()
-                val intent = Intent(this, activity::class.java)
-                startActivity(intent)
-            }
-            1 -> {
-                val activity = MeditationActivity()
-                val intent = Intent(this, activity::class.java)
-                startActivity(intent)
-            }
-            2 -> {
-                val activity = BreathActivity()
-                val intent = Intent(this, activity::class.java)
-                startActivity(intent)
-            }
-        }
+        val intent = Intent(this, WorkoutActivity::class.java)
+        intent.putExtra(MAIN_TAG ,c0)
+        startActivity(intent)
+
     }
 
     companion object MainObject {
         const val TAG = "livetag"
+        const val MAIN_TAG = "main_tag"
 
         fun log(text: String) {
             Log.d(TAG, text)
         }
+
+        val DRAWABLE_LIST_IMAGE_MAIN = arrayListOf(
+            R.drawable.eyes,
+            R.drawable.meditation,
+            R.drawable.breath
+        )
     }
 }

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveAndHealth">
         <activity
-            android:name=".MeditationActivity"
+            android:name=".WorkoutActivity"
             android:exported="false"
             android:label="@string/title_activity_meditation"
             android:theme="@style/Theme.LiveAndHealth.NoActionBar" />

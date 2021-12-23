@@ -11,6 +11,7 @@
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/activity_eyes.xml" value="0.29438405797101447" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/activity_meditation.xml" value="0.29438405797101447" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/activity_workout.xml" value="0.26222826086956524" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/content_eyes.xml" value="0.29438405797101447" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/content_main.xml" value="0.30842391304347827" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/content_meditation.xml" value="0.29438405797101447" />
@@ -22,6 +23,8 @@
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/list_container.xml" value="0.30842391304347827" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/list_main_layout.xml" value="0.33" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/list_main_workout_layout.xml" value="0.75" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/list_meditation_layout.xml" value="0.5" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/list_workout_layout.xml" value="0.26222826086956524" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/app/src/main/res/layout/activity_main.xml" value="0.19701086956521738" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/app/src/main/res/layout/list_main_workout_layout.xml" value="0.19701086956521738" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/app/src/main/res/layout/listviewmain_layout.xml" value="0.33" />
