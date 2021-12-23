@@ -8,14 +8,14 @@
 
     <string-array name="main_list_array">
         <item>ЗРЕНИЕ</item>
-        <item>МЕДИТАЦИИ</item>
         <item>ДЫХАНИЕ</item>
+        <item>МЕДИТАЦИИ</item>
     </string-array>
 
     <string-array name="main_list_discription_array">
         <item>10 упражнений, которые помогу улучшить зрение и снять усталость глаз</item>
-        <item>Помогают снять стресс, улучшить сон и восстановить хуй знает что ещё</item>
         <item>Гимнастики дыхания улучшающие кровобращение, поднимающие тонус</item>
+        <item>Помогают снять стресс, улучшить сон и восстановить хуй знает что ещё</item>
     </string-array>
     <string name="title_activity_eyes">EyesActivity</string>
     <!-- Strings used for fragments for navigation -->

@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object MainObject {
-        const val TAG = "livetag"
+        const val TAG = "live_tag"
         const val MAIN_TAG = "main_tag"
 
         fun log(text: String) {
@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity() {
 
         val DRAWABLE_LIST_IMAGE_MAIN = arrayListOf(
             R.drawable.eyes,
-            R.drawable.meditation,
-            R.drawable.breath
+            R.drawable.breath,
+            R.drawable.meditation
         )
     }
 }
