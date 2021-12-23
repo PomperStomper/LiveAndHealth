@@ -21,17 +21,17 @@ class WorkoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout)
-
+        //получаем интент
         val intent = intent
         val index = intent.getIntExtra(MAIN_TAG, 0)
-
+        // находим объекты
         mImageWourkout = findViewById(R.id.image_workout)
         mListMeditation = findViewById(R.id.listView_meditation)
         mTextZagolovok = findViewById(R.id.textView_head_meditation)
 
         // получаем список категорий
         val mMainListArray = resources.getStringArray(R.array.main_list_array)
-
+        // вставляем картинку и заголовок согласно интенту
         mImageWourkout.setImageResource(DRAWABLE_LIST_IMAGE_MAIN[index])
         mTextZagolovok.text = mMainListArray[index]
 
@@ -50,7 +50,6 @@ class WorkoutActivity : AppCompatActivity() {
         // адаптер
         val mAdapter = ListMeditationAdapter(workoutlist, this)
         mListMeditation.adapter = mAdapter
-
         // нажатие на список
         mListMeditation.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
 

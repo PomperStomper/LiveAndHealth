@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, WorkoutActivity::class.java)
         intent.putExtra(MAIN_TAG ,c0)
         startActivity(intent)
-
     }
 
     companion object MainObject {
