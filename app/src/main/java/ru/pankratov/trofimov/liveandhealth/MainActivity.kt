@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
     companion object MainObject {
         const val TAG = "live_tag"
         const val MAIN_TAG = "main_tag"
+        const val WORKOUT_TAG = "workout_tag"
 
         fun log(text: String) {
             Log.d(TAG, text)

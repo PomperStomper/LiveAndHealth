@@ -10,33 +10,34 @@
         android:id="@+id/image_workout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/meditation"
-        android:contentDescription="@string/app_name" />
+        app:srcCompat="@drawable/meditation" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/rounded"
         android:orientation="vertical"
         android:paddingTop="6dp"
-        android:background="@drawable/rounded"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline6">
 
         <TextView
             android:id="@+id/textView_head_meditation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Заголовок"
             android:layout_gravity="center"
-            android:textStyle="bold"
             android:layout_marginVertical="10dp"
+            android:text="Заголовок"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/listView_meditation"
@@ -45,5 +46,15 @@
             android:layout_weight="50"
             android:divider="@android:color/transparent" />
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent="0.3"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

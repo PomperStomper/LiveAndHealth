@@ -1,5 +1,6 @@
 package ru.pankratov.trofimov.liveandhealth
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ImageView
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.DRAWABLE_LIST_IMAGE_MAIN
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.MAIN_TAG
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_TAG
 import ru.pankratov.trofimov.liveandhealth.adapters.ListWorkoutAdapter
 import ru.pankratov.trofimov.liveandhealth.models.ListMeditation
 
@@ -52,9 +54,29 @@ class WorkoutActivity : AppCompatActivity() {
         mListMeditation.adapter = mAdapter
         // нажатие на список
         mListMeditation.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
-
+            playActivity(index, i)
         }
 
 
+    }
+
+    private fun playActivity(c0: Int, c1: Int) {
+        when (c0) {
+            0 -> {
+                val intent = Intent(this, EyesActivity::class.java)
+                intent.putExtra(WORKOUT_TAG ,c1)
+                startActivity(intent)
+            }
+            1 -> {
+                val intent = Intent(this, BreathActivity::class.java)
+                intent.putExtra(WORKOUT_TAG ,c1)
+                startActivity(intent)
+            }
+            2 -> {
+                val intent = Intent(this, MeditationActivity::class.java)
+                intent.putExtra(WORKOUT_TAG ,c1)
+                startActivity(intent)
+            }
+        }
     }
 }

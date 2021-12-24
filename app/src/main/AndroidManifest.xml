@@ -12,10 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveAndHealth">
         <activity
-            android:name=".WorkoutActivity"
-            android:exported="false"
-            android:label="@string/title_activity_meditation"
-            android:theme="@style/Theme.LiveAndHealth.NoActionBar" />
+            android:name=".MeditationActivity"
+            android:exported="false" />
         <activity
             android:name=".BreathActivity"
             android:exported="false"
@@ -25,6 +23,11 @@
             android:name=".EyesActivity"
             android:exported="false"
             android:label="@string/title_activity_eyes"
+            android:theme="@style/Theme.LiveAndHealth.NoActionBar" />
+        <activity
+            android:name=".WorkoutActivity"
+            android:exported="false"
+            android:label="@string/title_activity_meditation"
             android:theme="@style/Theme.LiveAndHealth.NoActionBar" />
         <activity
             android:name=".MainActivity"
