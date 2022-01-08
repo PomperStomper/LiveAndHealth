@@ -22,18 +22,17 @@ class WorkoutActivity : AppCompatActivity() {
     private lateinit var mTextZagolovok: TextView
     private lateinit var mListWourkout: ListView
 
+    private var indexActivity: Int = 0
+
     private var mMainListArray: Array<String>? = null
     private var workoutlist = arrayListOf<ListMeditation>()
-
-    private var mListAudioMeditationArray: Array<String>? = null
-    private var mListImageMeditationArray: Array<String>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout)
         //получаем интент
         val intent = intent
-        val indexActivity = intent.getIntExtra(MAIN_TAG, 0)
+        indexActivity = intent.getIntExtra(MAIN_TAG, 0)
         // находим объекты
         mImageWourkout = findViewById(R.id.image_workout)
         mListWourkout = findViewById(R.id.listView_meditation)
@@ -41,18 +40,14 @@ class WorkoutActivity : AppCompatActivity() {
 
         // получаем список категорий
         mMainListArray = resources.getStringArray(R.array.main_list_array)
-        // если:
-        //      глаза - то пока ничего
-        //      дыхание - пока ничего
-        //      медитации - заполняем списки ссылок на аудио и картинки
-        when (indexActivity) {
-            0 -> ""
-            1 -> ""
-            2 -> {
-                mListAudioMeditationArray = resources.getStringArray(R.array.list_meditation_audio_array)
-                mListImageMeditationArray = resources.getStringArray(R.array.list_meditation_image_array)
-            }
-        }
+
+
+
+
+        // медитации - заполняем списки ссылок на аудио и картинки
+        val mListAudioMeditationArray = resources.getStringArray(R.array.list_meditation_audio_array)
+        val mListImageMeditationArray = resources.getStringArray(R.array.list_meditation_image_array)
+
 
         // вставляем картинку и заголовок согласно интенту
         mImageWourkout.setImageResource(DRAWABLE_LIST_IMAGE_MAIN[indexActivity])
@@ -69,9 +64,7 @@ class WorkoutActivity : AppCompatActivity() {
         mListWourkout.adapter = mAdapter
         // нажатие на список
         mListWourkout.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
-            mListAudioMeditationArray?.get(i)
-                ?.let { mListImageMeditationArray?.get(i)
-                    ?.let { it1 -> playActivity(indexActivity, i, it, it1) } }
+            playActivity(indexActivity, i, mListAudioMeditationArray[i], mListImageMeditationArray[i])
         }
     }
 
@@ -97,7 +90,7 @@ class WorkoutActivity : AppCompatActivity() {
     private fun addWorkoutList(listName: Array<String>, listDescription: Array<String>) {
         for (i in listName.indices) {
             val value = ListMeditation()
-            value.image = R.drawable.ic_melody
+            value.image = drawableListIcon[indexActivity]
             value.title = listName[i]
             value.discription = listDescription[i]
             workoutlist.add(value)
@@ -108,22 +101,33 @@ class WorkoutActivity : AppCompatActivity() {
         when (indexActivity) {
             0 -> {
                 val intent = Intent(this, EyesActivity::class.java)
-                // пока ничего не отправляем
+                intent.putExtra(WORKOUT_TAG ,i)
                 startActivity(intent)
             }
             1 -> {
                 val intent = Intent(this, BreathActivity::class.java)
-                // пока ничего не отправляем
+                intent.putExtra(WORKOUT_TAG ,i)
                 startActivity(intent)
             }
             2 -> {
                 val intent = Intent(this, MeditationActivity::class.java)
                 intent.putExtra(WORKOUT_TAG ,i)
-                intent.putExtra(WORKOUT_NAME_TAG ,mMainListArray!![i])
+                val list = workoutlist[i]
+                val name = list.title
+                intent.putExtra(WORKOUT_NAME_TAG ,name)
                 intent.putExtra(WORKOUT_LINK_AUDIO_MEDITATION_TAG ,linkAudioMeditation)
                 intent.putExtra(WORKOUT_LINK_IMAGE_MEDITATION_TAG ,linkImageMeditation)
                 startActivity(intent)
             }
         }
     }
+
+    companion object {
+        val drawableListIcon = arrayListOf(
+            R.drawable.ic_eyes,
+            R.drawable.ic_breath,
+            R.drawable.ic_meditation
+        )
+    }
+
 }

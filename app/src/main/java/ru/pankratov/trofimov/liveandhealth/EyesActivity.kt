@@ -17,9 +17,9 @@ class EyesActivity : AppCompatActivity() {
 
         //получаем интент
         val intent = intent
-        val indexMeditation = intent.getIntExtra(WORKOUT_TAG, 0)
+        val index = intent.getIntExtra(WORKOUT_TAG, 0)
 
-        mText.text = "Было выбранно упражнение: $indexMeditation"
+        mText.text = "Было выбранно упражнение: $index"
 
     }
 }

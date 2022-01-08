@@ -47,7 +47,7 @@
     <string-array name="list_breath_exercise_array">
         <item>Дыхание \"Огня\"</item>
         <item>Дыхание поднимающее тонус</item>
-        <item>Дызание помогающее проснуться</item>
+        <item>Дыхание помогающее проснуться</item>
     </string-array>
     <string-array name="list_breath_description_array">
         <item>Повышает давление</item>
