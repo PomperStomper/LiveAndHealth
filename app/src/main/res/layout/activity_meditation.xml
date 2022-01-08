@@ -1,19 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_audio_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MeditationActivity">
 
-    <TextView
-        android:id="@+id/textView_meditation"
+
+    <ImageView
+        android:id="@+id/coverImage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop" />
+
+
+    <RelativeLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:background="@color/blue_10_trans"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/text_name_meditation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:paddingVertical="20dp"
+            android:text="@string/app_name"
+            android:textColor="@color/blue_800"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_10_trans"
+        android:alpha="0.7"
+        android:layout_alignTop="@+id/controls">
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/controls"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MEDITATION"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/controls_bar"
+        android:padding="5dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bw"
+            android:layout_weight="1"
+            android:id="@+id/backward"
+            android:onClick="seekBackward"
+            android:src="@drawable/ic_btn_rew"
+            android:background="@null"
+            android:contentDescription="TODO"/>
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pause"
+            android:layout_weight="1"
+            android:id="@+id/pause"
+            android:onClick="pause"
+            android:src="@mipmap/ic_btn_pause"
+            android:background="@null"
+            android:contentDescription="TODO"/>
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play"
+            android:layout_weight="1"
+            android:id="@+id/play"
+            android:onClick="play"
+            android:src="@mipmap/ic_btn_play"
+            android:background="@null"
+            android:contentDescription="@string/app_name"/>
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/fw"
+            android:id="@+id/forward"
+            android:onClick="seekForward"
+            android:src="@drawable/ic_btn_few"
+            android:background="@null"
+            android:contentDescription="TODO" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/controls_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/currentTime"
+            android:text="@string/_00_00_00"
+            android:textColor="@color/blue_800"
+            android:padding="5dp"/>
+
+        <SeekBar
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalTime"
+            android:text="@string/_00_00_00"
+            android:textColor="@color/blue_800"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+</RelativeLayout>

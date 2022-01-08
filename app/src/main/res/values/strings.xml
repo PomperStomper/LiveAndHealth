@@ -1,33 +1,82 @@
 <resources>
     <string name="app_name">LiveAndHealth</string>
-
+// MAIN
     <string name="main_text">главная</string>
     <string name="statistics_text">статистика</string>
     <string name="settings_text">настройки</string>
 
-
+// Главный список категорий (НАЗВАНИЯ)
     <string-array name="main_list_array">
         <item>ЗРЕНИЕ</item>
         <item>ДЫХАНИЕ</item>
         <item>МЕДИТАЦИИ</item>
     </string-array>
-
+// Главный список категорий (ОПИСАНИЯ)
     <string-array name="main_list_discription_array">
         <item>10 упражнений, которые помогу улучшить зрение и снять усталость глаз</item>
         <item>Гимнастики дыхания улучшающие кровобращение, поднимающие тонус</item>
         <item>Помогают снять стресс, улучшить сон и восстановить хуй знает что ещё</item>
     </string-array>
-    <string name="title_activity_eyes">EyesActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+// СИСТЕМНЫЕ, ПРЕДУПРЕЖДЕНИЯ, ОШИБКИ
+    <string name="title_activity_eyes">EyesActivity</string>
     <string name="title_activity_breath">BreathActivity</string>
     <string name="title_activity_meditation">MeditationActivity</string>
+    <string name="loading">Загрузка\.\.\.\</string>
+    <string name="file_not_found">Нет подключения</string>
+    <string name="bw">Назад</string>
+    <string name="pause">Пауза</string>
+    <string name="play">Играть</string>
+    <string name="fw">Вперед</string>
+    <string name="_00_00_00">00:00:00</string>
+
+
+// ЗРЕНИЕ
+    <string-array name="list_eyes_exercise_array">
+        <item>Разминка</item>
+        <item>Упражнение на фокусировку</item>
+        <item>Упражнение перед сном</item>
+    </string-array>
+    <string-array name="list_eyes_description_array">
+        <item>Используйте в начале дня</item>
+        <item>После долгой работы за компьютером</item>
+        <item>Расслабляет глаза перед сном</item>
+    </string-array>
+
+// ДЫХАНИЕ
+    <string-array name="list_breath_exercise_array">
+        <item>Дыхание \"Огня\"</item>
+        <item>Дыхание поднимающее тонус</item>
+        <item>Дызание помогающее проснуться</item>
+    </string-array>
+    <string-array name="list_breath_description_array">
+        <item>Повышает давление</item>
+        <item>Возвращает хорошее настроение</item>
+        <item>Настраивает на позитивный день</item>
+    </string-array>
+
+// МЕДИТАЦИИ
+    <string-array name="list_meditation_exercise_array">
+        <item>Медитация \"Лабиринт\"</item>
+        <item>Медитация \"Полет\"</item>
+        <item>Медитация от депрессии</item>
+    </string-array>
+    <string-array name="list_meditation_description_array">
+        <item>Помогает увеличить доходы</item>
+        <item>Настраивает на позитивный день</item>
+        <item>Избавляет от депрессии, улучшает настроение</item>
+    </string-array>
+
+    <string-array name="list_meditation_audio_array">
+        <item>https://pankratov.store/depressionimmunity/meditation_maze_01.mp3</item>
+        <item>https://pankratov.store/depressionimmunity/meditation_maze_01.mp3</item>
+        <item>https://pankratov.store/depressionimmunity/meditation_maze_01.mp3</item>
+    </string-array>
+    <string-array name="list_meditation_image_array">
+        <item>https://pankratov.store/depressionimmunity/backgroundplayer.jpg</item>
+        <item>https://pankratov.store/depressionimmunity/backgroundplayer.jpg</item>
+        <item>https://pankratov.store/depressionimmunity/backgroundplayer.jpg</item>
+    </string-array>
 
 
 </resources>
