@@ -1,6 +1,7 @@
 package ru.pankratov.trofimov.liveandhealth
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ImageView
@@ -51,6 +52,9 @@ class WorkoutActivity : AppCompatActivity() {
 
         // вставляем картинку и заголовок согласно интенту
         mImageWourkout.setImageResource(DRAWABLE_LIST_IMAGE_MAIN[indexActivity])
+        // + фирменный шрифт
+        val fontAppZagolovok = Typeface.createFromAsset(assets, "Comfortaa-Bold.ttf")
+        mTextZagolovok.typeface = fontAppZagolovok
         mTextZagolovok.text = mMainListArray!![indexActivity]
 
         // добавляем в список картинки и названия
@@ -60,7 +64,7 @@ class WorkoutActivity : AppCompatActivity() {
         val n = 0 // прокручиваем до начала
         mListWourkout.smoothScrollToPosition(n)
         // адаптер
-        val mAdapter = ListWorkoutAdapter(workoutlist, this)
+        val mAdapter = ListWorkoutAdapter(workoutlist, this, assets)
         mListWourkout.adapter = mAdapter
         // нажатие на список
         mListWourkout.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->

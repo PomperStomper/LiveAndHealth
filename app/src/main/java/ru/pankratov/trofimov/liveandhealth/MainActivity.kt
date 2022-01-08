@@ -1,10 +1,12 @@
 package ru.pankratov.trofimov.liveandhealth
 
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import ru.pankratov.trofimov.liveandhealth.fragments.HomeFragment
 import ru.pankratov.trofimov.liveandhealth.fragments.SettingsFragment

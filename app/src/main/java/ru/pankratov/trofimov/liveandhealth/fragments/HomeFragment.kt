@@ -1,5 +1,6 @@
 package ru.pankratov.trofimov.liveandhealth.fragments
 
+import android.content.res.AssetManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,7 +47,8 @@ class HomeFragment : Fragment() {
         mlistMain.smoothScrollToPosition(n)
         // адаптер
         val cont = requireActivity().baseContext
-        val mAdapter = ListMainAdapter(workoutFragmentlist, cont)
+        val asset = requireActivity().assets
+        val mAdapter = ListMainAdapter(workoutFragmentlist, cont, asset)
         mlistMain.adapter = mAdapter
 
         // нажатие на список
