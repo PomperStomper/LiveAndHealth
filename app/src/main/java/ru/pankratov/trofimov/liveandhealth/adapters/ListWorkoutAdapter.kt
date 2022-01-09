@@ -12,10 +12,8 @@ import android.widget.TextView
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.models.ListMeditation
 
-class ListWorkoutAdapter(items: ArrayList<ListMeditation>, ctx: Context, assetManager: AssetManager) :
+class ListWorkoutAdapter(items: ArrayList<ListMeditation>, ctx: Context) :
     ArrayAdapter<ListMeditation>(ctx, R.layout.list_workout_layout, items) {
-
-    val ass = assetManager
 
     //view holder is used to prevent findViewById calls
     private class AttractionItemViewHolder {
@@ -33,8 +31,8 @@ class ListWorkoutAdapter(items: ArrayList<ListMeditation>, ctx: Context, assetMa
             val inflater = LayoutInflater.from(context)
             view = inflater.inflate(R.layout.list_workout_layout, viewGroup, false)
 
-            val fontAppTitle = Typeface.createFromAsset(ass, "Comfortaa-Bold.ttf")
-            val fontAppDesc = Typeface.createFromAsset(ass, "Comfortaa-Light.ttf")
+            val fontAppTitle = Typeface.createFromAsset(context.assets, "Comfortaa-Bold.ttf")
+            val fontAppDesc = Typeface.createFromAsset(context.assets, "Comfortaa-Light.ttf")
 
             viewHolder = AttractionItemViewHolder()
             viewHolder.image = view!!.findViewById<View>(R.id.imageView_list_workout) as ImageView

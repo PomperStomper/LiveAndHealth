@@ -47,8 +47,7 @@ class HomeFragment : Fragment() {
         mlistMain.smoothScrollToPosition(n)
         // адаптер
         val cont = requireActivity().baseContext
-        val asset = requireActivity().assets
-        val mAdapter = ListMainAdapter(workoutFragmentlist, cont, asset)
+        val mAdapter = ListMainAdapter(workoutFragmentlist, cont)
         mlistMain.adapter = mAdapter
 
         // нажатие на список

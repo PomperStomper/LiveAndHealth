@@ -14,9 +14,6 @@ import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import com.squareup.picasso.Picasso
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_LINK_AUDIO_MEDITATION_TAG
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_LINK_IMAGE_MEDITATION_TAG
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_NAME_TAG
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_TAG
 import java.io.IOException
 

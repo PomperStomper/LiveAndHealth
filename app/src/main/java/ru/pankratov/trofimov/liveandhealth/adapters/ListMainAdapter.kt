@@ -14,10 +14,8 @@ import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.fragments.HomeFragment
 import ru.pankratov.trofimov.liveandhealth.models.ListMain
 
-class ListMainAdapter(items: ArrayList<ListMain>, ctx: Context, assetManager: AssetManager) :
+class ListMainAdapter(items: ArrayList<ListMain>, ctx: Context) :
     ArrayAdapter<ListMain>(ctx, R.layout.list_main_layout, items) {
-
-    val ass = assetManager
 
     //view holder is used to prevent findViewById calls
     private class AttractionItemViewHolder {
@@ -36,8 +34,8 @@ class ListMainAdapter(items: ArrayList<ListMain>, ctx: Context, assetManager: As
             val inflater = LayoutInflater.from(context)
             view = inflater.inflate(R.layout.list_main_layout, viewGroup, false)
 
-            val fontAppTitle = Typeface.createFromAsset(ass, "Comfortaa-Bold.ttf")
-            val fontAppDesc = Typeface.createFromAsset(ass, "Comfortaa-Light.ttf")
+            val fontAppTitle = Typeface.createFromAsset(context.assets, "Comfortaa-Bold.ttf")
+            val fontAppDesc = Typeface.createFromAsset(context.assets, "Comfortaa-Light.ttf")
 
             viewHolder = AttractionItemViewHolder()
             viewHolder.image = view!!.findViewById<View>(R.id.imageView_listmain) as ImageView

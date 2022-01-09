@@ -10,9 +10,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.DRAWABLE_LIST_IMAGE_MAIN
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.MAIN_TAG
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_LINK_AUDIO_MEDITATION_TAG
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_LINK_IMAGE_MEDITATION_TAG
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_NAME_TAG
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_TAG
 import ru.pankratov.trofimov.liveandhealth.adapters.ListWorkoutAdapter
 import ru.pankratov.trofimov.liveandhealth.models.ListMeditation
@@ -55,7 +52,7 @@ class WorkoutActivity : AppCompatActivity() {
         val n = 0 // прокручиваем до начала
         mListWourkout.smoothScrollToPosition(n)
         // адаптер
-        val mAdapter = ListWorkoutAdapter(workoutlist, this, assets)
+        val mAdapter = ListWorkoutAdapter(workoutlist, this)
         mListWourkout.adapter = mAdapter
         // нажатие на список
         mListWourkout.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->

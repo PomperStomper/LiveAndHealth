@@ -56,10 +56,9 @@ class MainActivity : AppCompatActivity() {
         const val TAG = "live_tag"
         const val MAIN_TAG = "main_tag"
         const val WORKOUT_TAG = "workout_tag"
-        const val WORKOUT_NAME_TAG = "workout_name_tag"
-        const val WORKOUT_LINK_AUDIO_MEDITATION_TAG = "workout_1_tag"
-        const val WORKOUT_LINK_IMAGE_MEDITATION_TAG = "workout_2_tag"
-        const val INDEX_MEDITATION_TAG = "index_meditation"
+        const val SCREENDIALOG_TITLE_TAG = "screendialog_title_tag"
+        const val SCREENDIALOG_BODY_TAG = "screendialog_body_tag"
+
 
         fun log(text: String) {
             Log.d(TAG, text)
