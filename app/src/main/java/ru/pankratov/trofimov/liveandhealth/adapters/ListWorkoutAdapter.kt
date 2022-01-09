@@ -33,8 +33,8 @@ class ListWorkoutAdapter(items: ArrayList<ListMeditation>, ctx: Context, assetMa
             val inflater = LayoutInflater.from(context)
             view = inflater.inflate(R.layout.list_workout_layout, viewGroup, false)
 
-            val fontAppTitle = Typeface.createFromAsset(ass, "Comfortaa-SemiBold.ttf")
-            val fontAppDesc = Typeface.createFromAsset(ass, "Comfortaa-Regular.ttf")
+            val fontAppTitle = Typeface.createFromAsset(ass, "Comfortaa-Bold.ttf")
+            val fontAppDesc = Typeface.createFromAsset(ass, "Comfortaa-Light.ttf")
 
             viewHolder = AttractionItemViewHolder()
             viewHolder.image = view!!.findViewById<View>(R.id.imageView_list_workout) as ImageView

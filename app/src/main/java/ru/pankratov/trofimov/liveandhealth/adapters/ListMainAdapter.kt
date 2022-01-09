@@ -37,7 +37,7 @@ class ListMainAdapter(items: ArrayList<ListMain>, ctx: Context, assetManager: As
             view = inflater.inflate(R.layout.list_main_layout, viewGroup, false)
 
             val fontAppTitle = Typeface.createFromAsset(ass, "Comfortaa-Bold.ttf")
-            val fontAppDesc = Typeface.createFromAsset(ass, "Comfortaa-Regular.ttf")
+            val fontAppDesc = Typeface.createFromAsset(ass, "Comfortaa-Light.ttf")
 
             viewHolder = AttractionItemViewHolder()
             viewHolder.image = view!!.findViewById<View>(R.id.imageView_listmain) as ImageView

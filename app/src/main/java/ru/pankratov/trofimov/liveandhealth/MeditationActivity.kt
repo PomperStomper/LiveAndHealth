@@ -33,10 +33,15 @@ class MeditationActivity : AppCompatActivity() {
         // get data from main activity intent
         val intent = intent
         val index = intent.getIntExtra(WORKOUT_TAG, 0)
-        val nameMeditation = intent.getStringExtra(WORKOUT_NAME_TAG)
-        val pathSong = intent.getStringExtra(WORKOUT_LINK_AUDIO_MEDITATION_TAG)
-        val pathImg = intent.getStringExtra(WORKOUT_LINK_IMAGE_MEDITATION_TAG)
 
+        // медитации - заполняем списки ссылок на название, аудио и картинки
+        val listName = resources.getStringArray(R.array.list_meditation_exercise_array)
+        val listAudioMeditationArray = resources.getStringArray(R.array.list_meditation_audio_array)
+        val listImageMeditationArray = resources.getStringArray(R.array.list_meditation_image_array)
+        // получаем нужное из списков
+        val nameMeditation = listName[index]
+        val pathSong = listAudioMeditationArray[index]
+        val pathImg = listImageMeditationArray[index]
 
         // create a media player
         mediaPlayer = MediaPlayer()
@@ -208,6 +213,10 @@ class MeditationActivity : AppCompatActivity() {
             .append(":")
             .append(String.format("%02d", seconds))
         return buf.toString()
+    }
+
+    companion object {
+
     }
 
 }

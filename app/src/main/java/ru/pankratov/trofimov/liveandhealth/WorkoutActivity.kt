@@ -25,7 +25,6 @@ class WorkoutActivity : AppCompatActivity() {
 
     private var indexActivity: Int = 0
 
-    private var mMainListArray: Array<String>? = null
     private var workoutlist = arrayListOf<ListMeditation>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,25 +39,17 @@ class WorkoutActivity : AppCompatActivity() {
         mTextZagolovok = findViewById(R.id.textView_head_meditation)
 
         // получаем список категорий
-        mMainListArray = resources.getStringArray(R.array.main_list_array)
-
-
-
-
-        // медитации - заполняем списки ссылок на аудио и картинки
-        val mListAudioMeditationArray = resources.getStringArray(R.array.list_meditation_audio_array)
-        val mListImageMeditationArray = resources.getStringArray(R.array.list_meditation_image_array)
-
+        val mainListArray = resources.getStringArray(R.array.main_list_array)
 
         // вставляем картинку и заголовок согласно интенту
         mImageWourkout.setImageResource(DRAWABLE_LIST_IMAGE_MAIN[indexActivity])
         // + фирменный шрифт
         val fontAppZagolovok = Typeface.createFromAsset(assets, "Comfortaa-Bold.ttf")
         mTextZagolovok.typeface = fontAppZagolovok
-        mTextZagolovok.text = mMainListArray!![indexActivity]
+        mTextZagolovok.text = mainListArray[indexActivity]
 
         // добавляем в список картинки и названия
-        inputExerciseInList(indexActivity)
+        inputExerciseInList()
 
         // прокрутка списка
         val n = 0 // прокручиваем до начала
@@ -68,12 +59,12 @@ class WorkoutActivity : AppCompatActivity() {
         mListWourkout.adapter = mAdapter
         // нажатие на список
         mListWourkout.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
-            playActivity(indexActivity, i, mListAudioMeditationArray[i], mListImageMeditationArray[i])
+            playActivity(indexActivity, i)
         }
     }
-
-    private fun inputExerciseInList(c0: Int) {
-        when (c0) {
+    // Заполняем Списки упражнений и описаний из ресурсов
+    private fun inputExerciseInList() {
+        when (indexActivity) {
             0 -> {
                 val listName = resources.getStringArray(R.array.list_eyes_exercise_array)
                 val listDescription = resources.getStringArray(R.array.list_eyes_description_array)
@@ -100,8 +91,8 @@ class WorkoutActivity : AppCompatActivity() {
             workoutlist.add(value)
         }
     }
-
-    private fun playActivity(indexActivity: Int, i: Int, linkAudioMeditation: String, linkImageMeditation: String) {
+    // выбранное упражнение
+    private fun playActivity(indexActivity: Int, i: Int) {
         when (indexActivity) {
             0 -> {
                 val intent = Intent(this, EyesActivity::class.java)
@@ -116,17 +107,13 @@ class WorkoutActivity : AppCompatActivity() {
             2 -> {
                 val intent = Intent(this, MeditationActivity::class.java)
                 intent.putExtra(WORKOUT_TAG ,i)
-                val list = workoutlist[i]
-                val name = list.title
-                intent.putExtra(WORKOUT_NAME_TAG ,name)
-                intent.putExtra(WORKOUT_LINK_AUDIO_MEDITATION_TAG ,linkAudioMeditation)
-                intent.putExtra(WORKOUT_LINK_IMAGE_MEDITATION_TAG ,linkImageMeditation)
                 startActivity(intent)
             }
         }
     }
 
     companion object {
+        // список иконок к категориям
         val drawableListIcon = arrayListOf(
             R.drawable.ic_eyes,
             R.drawable.ic_breath,

@@ -55,6 +55,10 @@
         <item>Настраивает на позитивный день</item>
     </string-array>
 
+    <string name="text_inhale">ВДОХ</string>
+    <string name="text_exhalation">ВЫДОХ</string>
+    <string name="text_delay">ЗАДЕРЖКА</string>
+
 // МЕДИТАЦИИ
     <string-array name="list_meditation_exercise_array">
         <item>Медитация \"Лабиринт\"</item>
