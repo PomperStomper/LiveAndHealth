@@ -21,6 +21,7 @@ class BreathActivity : AppCompatActivity() {
 
     private lateinit var mTextNameBreath: TextView
     private lateinit var mTextBreath: TextView
+    private lateinit var mTextBreathNumber: TextView
     private lateinit var mNumberInhale: TextView
     private lateinit var mNumberDelay1: TextView
     private lateinit var mNumberExhalation: TextView
@@ -41,16 +42,18 @@ class BreathActivity : AppCompatActivity() {
     var inhale = false
     var exhalation = false
 
-    var progressMy = 0F
-
-    val quantity = 2                        // кол-во повторений
+    // Эти 5 параметров необходимо получать из базы данных для каждого упражнения
+    val quantity = 20                        // кол-во повторений
     val TIME_INHALE: Long = 5000            // время вдоха
     val TIME_DELAY_1: Long = 3000           // время 1й задержки
     val TIME_EXHALATION: Long = 4000        // время выдоха
     val TIME_DELAY_2: Long = 2000           // время 2й задежки
+
+
+
     val TIME_BREATH: Long = TIME_INHALE + TIME_DELAY_1 + TIME_EXHALATION + TIME_DELAY_2 // время одного цикла
     val TIME_EXERCISE: Long = TIME_BREATH * quantity    // общее время упражнения
-    var TIME_CURRENT = 0                    // сколько прошло от общего времени
+    var TIME_PASSED = 0                    // сколько прошло от общего времени
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,6 +70,7 @@ class BreathActivity : AppCompatActivity() {
 
         mTextNameBreath = findViewById(R.id.text_name_exercise_breath)
         mTextBreath = findViewById(R.id.text_breath)
+        mTextBreathNumber = findViewById(R.id.text_breath_number)
         mNumberInhale = findViewById(R.id.number_inhale_breath)
         mNumberDelay1 = findViewById(R.id.number_delay_1_breath)
         mNumberExhalation = findViewById(R.id.number_exhalation_breath)
@@ -94,6 +98,8 @@ class BreathActivity : AppCompatActivity() {
         // + фирменный шрифт
         val fontApp = Typeface.createFromAsset(assets, "Comfortaa-Bold.ttf")
         mTextNameBreath.typeface = fontApp
+        mTextBreath.typeface = fontApp
+        mTextBreathNumber.typeface = fontApp
 
         // Добавляем анимацию вращения
         animationSlider = CircularRotateAnimation(mSlider, 400F, this)
@@ -107,7 +113,7 @@ class BreathActivity : AppCompatActivity() {
 //        screenDialog("Это диалог", "здесь будет текст сообщения")
 
     }
-
+    // обновление ПрогрессБар
     private val mHandler = Handler()
     private val mRunnable: Runnable = object : Runnable {
         override fun run() {
@@ -127,41 +133,66 @@ class BreathActivity : AppCompatActivity() {
         mSlider.startAnimation(animationSlider)
         mSlider.visibility = View.VISIBLE
         mBtnStart.isClickable = false
-        //update
         mRunnable.run()
     }
 
+    private fun treatmentBreath(interval: Int, counter: Int) {
+        when (interval) {
+            0 -> {
+                mTextBreath.text = ""
+                mTextBreathNumber.text = ""
+            }
+            1 -> {
+                mTextBreath.text = getString(R.string.text_inhale)
+                if (inhale) mRastish.animate().scaleX(2.7f).scaleY(2.7f).duration = TIME_INHALE
+                inhale = false
+                mTextBreathNumber.text = ((TIME_BREATH / 1000) - (TIME_DELAY_2 / 1000) - (TIME_EXHALATION / 1000) - (TIME_DELAY_1 / 1000) - counter).toString()
+            }
+            2 -> {
+                mTextBreath.text = getString(R.string.text_delay)
+                mTextBreathNumber.text = ((TIME_BREATH / 1000) - (TIME_DELAY_2 / 1000) - (TIME_EXHALATION / 1000) - counter).toString()
+            }
+            3 -> {
+                mTextBreath.text = getString(R.string.text_exhalation)
+                if (exhalation) mRastish.animate().scaleX(1f).scaleY(1f).duration = TIME_EXHALATION
+                exhalation =false
+                mTextBreathNumber.text = ((TIME_BREATH / 1000) - (TIME_DELAY_2 / 1000) - counter).toString()
+            }
+            4 -> {
+                mTextBreath.text = getString(R.string.text_delay)
+                mTextBreathNumber.text = ((TIME_BREATH / 1000) - counter).toString()
+            }
+        }
+
+
+    }
+
+    private fun intervalBreath(c0: Int): Int {
+        var counter = 0
+        if (c0 < TIME_INHALE / 1000) counter = 1
+        if (c0 >= TIME_INHALE / 1000)  counter = 2
+        if (c0 >= TIME_INHALE / 1000 + TIME_DELAY_1 / 1000)  counter = 3
+        if (c0 >= TIME_INHALE / 1000 + TIME_DELAY_1 / 1000 + TIME_EXHALATION / 1000)  counter = 4
+        return counter
+    }
+
     private fun startExerciseTimer() {
-        var interval = 0
+        var counterInterval = 0
         countDownTimer = object : CountDownTimer(TIME_EXERCISE, 1000) {
             @SuppressLint("ResourceAsColor")
             override fun onTick(millis: Long) {
                 // обновляем время на общих часах и положение бегунка
                 seekBarAndTimeExerciseUpdate()
+                // находим интервал
+                val interval = intervalBreath(counterInterval)
+                // обрабатываем действия на экране
+                treatmentBreath(interval, counterInterval)
 
-                // находим интервалы и обрабатываем
-                if (interval < TIME_INHALE / 1000) {
-                    mTextBreath.text = getString(R.string.text_inhale)
-                    if (inhale) mRastish.animate().scaleX(2.7f).scaleY(2.7f).duration = TIME_INHALE
-                    inhale = false
-                }
-                if (interval >= TIME_INHALE / 1000) {
-                    mTextBreath.text = getString(R.string.text_delay)
-                }
-                if (interval >= TIME_INHALE / 1000 + TIME_DELAY_1 / 1000) {
-                    mTextBreath.text = getString(R.string.text_exhalation)
-                    if (exhalation) mRastish.animate().scaleX(1f).scaleY(1f).duration = TIME_EXHALATION
-                    exhalation =false
-                }
-                if (interval >= TIME_INHALE / 1000 + TIME_DELAY_1 / 1000 + TIME_EXHALATION / 1000) {
-                    mTextBreath.text = getString(R.string.text_delay)
-                }
+                counterInterval += 1
+                TIME_PASSED += 1000
 
-                interval += 1
-                TIME_CURRENT += 1000
-
-                if (interval == (TIME_BREATH / 1000).toInt()) {
-                    interval = 0
+                if (counterInterval == (TIME_BREATH / 1000).toInt()) {
+                    counterInterval = 0
                     inhale = true
                     exhalation = true
                 }
@@ -181,10 +212,10 @@ class BreathActivity : AppCompatActivity() {
         //устанавливаем максимальное значение
         seekBar!!.max = TIME_EXERCISE.toInt()
         // обновляем время оставшееся
-        val mDuration = TIME_EXERCISE - TIME_CURRENT
+        val mDuration = TIME_EXERCISE - TIME_PASSED
         mTotalTime.text = getTimeString(mDuration)
         //обновляем позицию
-        val mCurrentPosition = TIME_CURRENT
+        val mCurrentPosition = TIME_PASSED
         seekBar!!.progress = mCurrentPosition
         //обновляем время прошедшее
         mCurrentTime.text = getTimeString(mCurrentPosition.toLong())
@@ -192,6 +223,7 @@ class BreathActivity : AppCompatActivity() {
 
     private fun stopAll() {
         mTextBreath.text = ""
+        mTextBreathNumber.text = ""
         // останавливаем анимацию
         mSlider.clearAnimation()
         animationSlider?.cancel()
