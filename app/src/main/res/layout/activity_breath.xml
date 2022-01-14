@@ -127,13 +127,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/rastish_breath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/rastish"
+        android:src="@drawable/oval"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -232,8 +232,7 @@
 
     <Button
         android:id="@+id/button_start_breath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/AppButton"
         android:layout_weight="1"
         android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"

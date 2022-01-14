@@ -15,6 +15,7 @@ import ru.pankratov.trofimov.liveandhealth.controls.CircularRotateAnimation
 import ru.pankratov.trofimov.liveandhealth.dialogs.ScreenDialog
 import android.os.SystemClock
 import android.widget.*
+import pl.droidsonroids.gif.GifImageView
 
 
 class BreathActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class BreathActivity : AppCompatActivity() {
     private lateinit var mNumberDelay2: TextView
 
     private lateinit var mSlider: ImageView
-    private lateinit var mRastish: ImageView
+    private lateinit var mRastish: GifImageView
     private lateinit var mTotalTime: TextView
     private lateinit var mCurrentTime: TextView
 
@@ -179,7 +180,6 @@ class BreathActivity : AppCompatActivity() {
     private fun startExerciseTimer() {
         var counterInterval = 0
         countDownTimer = object : CountDownTimer(TIME_EXERCISE, 1000) {
-            @SuppressLint("ResourceAsColor")
             override fun onTick(millis: Long) {
                 // обновляем время на общих часах и положение бегунка
                 seekBarAndTimeExerciseUpdate()
