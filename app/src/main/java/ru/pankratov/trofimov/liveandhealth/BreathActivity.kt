@@ -134,6 +134,7 @@ class BreathActivity : AppCompatActivity() {
         mSlider.startAnimation(animationSlider)
         mSlider.visibility = View.VISIBLE
         mBtnStart.isClickable = false
+        mBtnStart.isActivated = true
         mRunnable.run()
     }
 
