@@ -5,16 +5,17 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.SeekBar
-import android.widget.TextView
+import com.budiyev.android.circularprogressbar.CircularProgressBar
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.SCREENDIALOG_BODY_TAG
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.SCREENDIALOG_TITLE_TAG
 import ru.pankratov.trofimov.liveandhealth.controls.CircularRotateAnimation
 import ru.pankratov.trofimov.liveandhealth.dialogs.ScreenDialog
+import android.os.SystemClock
+import android.widget.*
+
 
 class BreathActivity : AppCompatActivity() {
 
@@ -30,6 +31,8 @@ class BreathActivity : AppCompatActivity() {
     private lateinit var mTotalTime: TextView
     private lateinit var mCurrentTime: TextView
 
+    private lateinit var progressBar: CircularProgressBar
+
     private lateinit var mBtnStart: Button
     private var seekBar: SeekBar? = null
     private var countDownTimer: CountDownTimer? = null
@@ -38,11 +41,13 @@ class BreathActivity : AppCompatActivity() {
     var inhale = false
     var exhalation = false
 
+    var progressMy = 0F
+
     val quantity = 2                        // кол-во повторений
     val TIME_INHALE: Long = 5000            // время вдоха
-    val TIME_DELAY_1: Long = 3000           // время 1 задержки
+    val TIME_DELAY_1: Long = 3000           // время 1й задержки
     val TIME_EXHALATION: Long = 4000        // время выдоха
-    val TIME_DELAY_2: Long = 2000           // время 2 задежки
+    val TIME_DELAY_2: Long = 2000           // время 2й задежки
     val TIME_BREATH: Long = TIME_INHALE + TIME_DELAY_1 + TIME_EXHALATION + TIME_DELAY_2 // время одного цикла
     val TIME_EXERCISE: Long = TIME_BREATH * quantity    // общее время упражнения
     var TIME_CURRENT = 0                    // сколько прошло от общего времени
@@ -73,6 +78,8 @@ class BreathActivity : AppCompatActivity() {
         mSlider = findViewById(R.id.slider_breath)
         mRastish = findViewById(R.id.rastish_breath)
 
+        progressBar = findViewById(R.id.progress_bar)
+
         //устанавливаем начальное время упражнения
         mTotalTime.text = getTimeString(TIME_EXERCISE)
         // устанавливанем название
@@ -89,7 +96,7 @@ class BreathActivity : AppCompatActivity() {
         mTextNameBreath.typeface = fontApp
 
         // Добавляем анимацию вращения
-        animationSlider = CircularRotateAnimation(mSlider, 400F)
+        animationSlider = CircularRotateAnimation(mSlider, 400F, this)
         animationSlider?.duration = TIME_BREATH
         animationSlider?.repeatCount = TIME_EXERCISE.toInt() / 1000
 
@@ -97,14 +104,31 @@ class BreathActivity : AppCompatActivity() {
             start()
         }
 
-        screenDialog("Это диалог", "здесь будет текст сообщения")
+//        screenDialog("Это диалог", "здесь будет текст сообщения")
 
     }
+
+    private val mHandler = Handler()
+    private val mRunnable: Runnable = object : Runnable {
+        override fun run() {
+            //set max value
+            progressBar.maximum = 100F
+            progressBar.progressAnimationDuration = TIME_BREATH
+            //set progress to current position
+            val mPosition = animationSlider!!.progress
+            progressBar.progress = mPosition
+            //repeat above code every second
+            mHandler.postDelayed(this, 10)
+        }
+    }
+
     fun start() {
         startExerciseTimer()
         mSlider.startAnimation(animationSlider)
         mSlider.visibility = View.VISIBLE
         mBtnStart.isClickable = false
+        //update
+        mRunnable.run()
     }
 
     private fun startExerciseTimer() {
@@ -114,6 +138,7 @@ class BreathActivity : AppCompatActivity() {
             override fun onTick(millis: Long) {
                 // обновляем время на общих часах и положение бегунка
                 seekBarAndTimeExerciseUpdate()
+
                 // находим интервалы и обрабатываем
                 if (interval < TIME_INHALE / 1000) {
                     mTextBreath.text = getString(R.string.text_inhale)
@@ -204,7 +229,7 @@ class BreathActivity : AppCompatActivity() {
             .append(String.format("%02d", minutes))
             .append(":")
             .append(String.format("%02d", seconds))
-        Log.d("123","время: $buf")
+//        Log.d("123","время: $buf")
         return buf.toString()
     }
 

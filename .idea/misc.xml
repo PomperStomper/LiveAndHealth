@@ -3,11 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/border_shadow.xml" value="0.33489583333333334" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/custom_progressbar.xml" value="0.33489583333333334" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/custom_seekbar_progress.xml" value="0.33489583333333334" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/custom_thumb.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/dradient3.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/gradient1.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/gradient2.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/rastish.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/rounded.xml" value="0.33489583333333334" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/seekbar_progress.xml" value="0.33489583333333334" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/seekbar_style.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/selector_btn_main.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/slider.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/trajectory.xml" value="0.33489583333333334" />

@@ -68,6 +68,41 @@
             android:text="0" />
     </LinearLayout>
 
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progress_bar"-->
+<!--        style="@android:style/Widget.ProgressBar.Horizontal"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:progress="0"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/button_start_breath"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <com.budiyev.android.circularprogressbar.CircularProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="325dp"
+        android:layout_height="325dp"
+        app:animateProgress="true"
+        app:backgroundStrokeColor="@color/blue_200"
+        app:backgroundStrokeWidth="20dp"
+        app:drawBackgroundStroke="true"
+        app:foregroundStrokeCap="round"
+        app:foregroundStrokeColor="@color/blue_10"
+        app:foregroundStrokeWidth="20dp"
+        app:indeterminate="false"
+        app:indeterminateMinimumAngle="1"
+        app:indeterminateRotationAnimationDuration="1200"
+        app:indeterminateSweepAnimationDuration="600"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:progress="0"
+        app:startAngle="-90" />
+
     <ImageView
         android:id="@+id/trajectory_breath"
         android:layout_width="wrap_content"
@@ -86,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/slider"
+        android:src="@drawable/slider_big"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,6 +157,7 @@
         android:layout_height="wrap_content"
         android:clickable="false"
         android:layout_marginTop="10dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -132,22 +168,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
             android:text="@string/_00_00_00"
             android:textColor="@color/blue_800" />
 
         <SeekBar
             android:id="@+id/seekBar_breath"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp" />
+            android:splitTrack="false"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="100000000"
+            android:progressDrawable="@drawable/seekbar_style"
+            android:thumb="@drawable/slider_small"/>
 
         <TextView
             android:id="@+id/totalTime_breath"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
             android:text="@string/_00_00_00"
             android:textColor="@color/blue_800" />
     </LinearLayout>
