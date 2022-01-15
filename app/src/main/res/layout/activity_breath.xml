@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".BreathActivity">
 
     <LinearLayout
@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/grey_light"
             android:text="@string/text_inhale" />
 
         <TextView
@@ -27,12 +28,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/grey_light"
             android:text="0" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/grey_light"
             android:text="@string/text_delay" />
 
         <TextView
@@ -40,12 +43,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/grey_light"
             android:text="0" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/grey_light"
             android:text="@string/text_exhalation" />
 
         <TextView
@@ -53,12 +58,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/grey_light"
             android:text="0" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/grey_light"
             android:text="@string/text_delay" />
 
         <TextView
@@ -66,32 +73,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/grey_light"
             android:text="0" />
     </LinearLayout>
-
-<!--    <ProgressBar-->
-<!--        android:id="@+id/progress_bar"-->
-<!--        style="@android:style/Widget.ProgressBar.Horizontal"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:progress="0"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/button_start_breath"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
     <com.budiyev.android.circularprogressbar.CircularProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="325dp"
         android:layout_height="325dp"
         app:animateProgress="true"
-        app:backgroundStrokeColor="@color/blue_200"
+        app:backgroundStrokeColor="@color/blue_800"
         app:backgroundStrokeWidth="20dp"
         app:drawBackgroundStroke="true"
         app:foregroundStrokeCap="round"
-        app:foregroundStrokeColor="@color/blue_10"
+        app:foregroundStrokeColor="@color/grey_dark"
         app:foregroundStrokeWidth="20dp"
         app:indeterminate="false"
         app:indeterminateMinimumAngle="1"
@@ -103,18 +98,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:progress="0"
         app:startAngle="-90" />
-
-    <ImageView
-        android:id="@+id/trajectory_breath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/trajectory"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/slider_breath"
@@ -192,7 +175,7 @@
             android:gravity="center"
             android:layout_weight="1"
             android:text="@string/_00_00_00"
-            android:textColor="@color/blue_800" />
+            android:textColor="@color/white" />
 
         <SeekBar
             android:id="@+id/seekBar_breath"
@@ -214,7 +197,7 @@
             android:gravity="center"
             android:layout_weight="1"
             android:text="@string/_00_00_00"
-            android:textColor="@color/blue_800" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <TextView
@@ -225,7 +208,7 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -237,6 +220,7 @@
         android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,8 +6,8 @@
     <gradient
         android:endColor="@color/black"
         android:centerColor="@color/blue_800"
-        android:gradientRadius="30"
-        android:startColor="@color/blue_400"
+        android:gradientRadius="40"
+        android:startColor="@color/black"
         android:type="radial"
         android:useLevel="false" />
 

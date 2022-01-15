@@ -7,11 +7,12 @@ import android.view.animation.Animation
 import android.view.animation.Transformation
 import com.budiyev.android.circularprogressbar.CircularProgressBar
 import ru.pankratov.trofimov.liveandhealth.BreathActivity
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.log
 import kotlin.math.cos
 import kotlin.math.sin
 
-class CircularRotateAnimation(view: View, r: Float, act: BreathActivity) : Animation() {
-    private val view: View = view   // картинка
+class CircularRotateAnimation(v: View, r: Float) : Animation() {
+    private val view: View = v   // картинка
     private var cx = 0f
     private var cy = 0f             // центр
     private var prevX = 0f
@@ -60,10 +61,7 @@ class CircularRotateAnimation(view: View, r: Float, act: BreathActivity) : Anima
         // применяем анимацию
         t.matrix.setTranslate(dx, dy)
 
-        progress = (interpolatedTime * 100).toFloat()
-//        Log.d("123", "interpolatedTime: $interpolatedTime")
-//        Log.d("123", "progress: $progress")
-
+        progress = interpolatedTime * 100
     }
 
 }

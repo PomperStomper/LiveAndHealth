@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:dither="true"
-    android:shape="oval" >
-
+    android:shape="rectangle" >
+    <corners
+        android:bottomRightRadius="2dp"
+        android:bottomLeftRadius="2dp"
+        android:topLeftRadius="2dp"
+        android:topRightRadius="2dp"/>
     <gradient
-        android:endColor="@color/black"
-        android:centerColor="@color/blue_800"
-        android:gradientRadius="10"
-        android:startColor="@color/blue_400"
-        android:type="radial"
+        android:endColor="@color/orange"
+        android:centerColor="@color/red"
+        android:startColor="@color/orange"
+        android:type="linear"
         android:useLevel="false" />
 
     <size

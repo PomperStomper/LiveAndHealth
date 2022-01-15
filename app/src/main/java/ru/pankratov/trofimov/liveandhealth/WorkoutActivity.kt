@@ -112,9 +112,9 @@ class WorkoutActivity : AppCompatActivity() {
     companion object {
         // список иконок к категориям
         val drawableListIcon = arrayListOf(
-            R.drawable.ic_eyes,
-            R.drawable.ic_breath,
-            R.drawable.ic_meditation
+            R.mipmap.ic_eyes,
+            R.mipmap.ic_breath,
+            R.mipmap.ic_meditation
         )
     }
 

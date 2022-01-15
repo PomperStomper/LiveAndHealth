@@ -16,6 +16,7 @@ import ru.pankratov.trofimov.liveandhealth.dialogs.ScreenDialog
 import android.os.SystemClock
 import android.widget.*
 import pl.droidsonroids.gif.GifImageView
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.log
 
 
 class BreathActivity : AppCompatActivity() {
@@ -44,7 +45,7 @@ class BreathActivity : AppCompatActivity() {
     var exhalation = false
 
     // Эти 5 параметров необходимо получать из базы данных для каждого упражнения
-    val quantity = 20                        // кол-во повторений
+    val quantity = 1                        // кол-во повторений
     val TIME_INHALE: Long = 5000            // время вдоха
     val TIME_DELAY_1: Long = 3000           // время 1й задержки
     val TIME_EXHALATION: Long = 4000        // время выдоха
@@ -102,8 +103,11 @@ class BreathActivity : AppCompatActivity() {
         mTextBreath.typeface = fontApp
         mTextBreathNumber.typeface = fontApp
 
+        //устанавливаем максимальное значение
+        seekBar!!.max = TIME_EXERCISE.toInt()
+
         // Добавляем анимацию вращения
-        animationSlider = CircularRotateAnimation(mSlider, 400F, this)
+        animationSlider = CircularRotateAnimation(mSlider, 400F)
         animationSlider?.duration = TIME_BREATH
         animationSlider?.repeatCount = TIME_EXERCISE.toInt() / 1000
 
@@ -190,6 +194,8 @@ class BreathActivity : AppCompatActivity() {
                 treatmentBreath(interval, counterInterval)
 
                 counterInterval += 1
+                val mil = millis / 1000
+                log("seconds: $mil")
                 TIME_PASSED += 1000
 
                 if (counterInterval == (TIME_BREATH / 1000).toInt()) {
@@ -210,11 +216,9 @@ class BreathActivity : AppCompatActivity() {
     }
 
     private fun seekBarAndTimeExerciseUpdate() {
-        //устанавливаем максимальное значение
-        seekBar!!.max = TIME_EXERCISE.toInt()
         // обновляем время оставшееся
-        val mDuration = TIME_EXERCISE - TIME_PASSED
-        mTotalTime.text = getTimeString(mDuration)
+        val duration = TIME_EXERCISE - TIME_PASSED
+        mTotalTime.text = getTimeString(duration)
         //обновляем позицию
         val mCurrentPosition = TIME_PASSED
         seekBar!!.progress = mCurrentPosition

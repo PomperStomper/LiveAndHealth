@@ -9,18 +9,19 @@ import android.os.Handler
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
-import android.widget.SeekBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.squareup.picasso.Picasso
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_TAG
 import java.io.IOException
 
 class MeditationActivity : AppCompatActivity() {
 
+    private lateinit var mBtnPlayPause: ImageButton
+
     private var mediaPlayer: MediaPlayer? = null
     private var seekBar: SeekBar? = null
+
+    var playPause = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +40,9 @@ class MeditationActivity : AppCompatActivity() {
         val nameMeditation = listName[index]
         val pathSong = listAudioMeditationArray[index]
         val pathImg = listImageMeditationArray[index]
+
+
+
 
         // create a media player
         mediaPlayer = MediaPlayer()
@@ -65,6 +69,11 @@ class MeditationActivity : AppCompatActivity() {
 
             supportActionBar?.hide()
 
+            mBtnPlayPause = findViewById(R.id.play_pause)
+            mBtnPlayPause.setOnClickListener() {
+                playPauseBtn()
+            }
+
             // display title
             (findViewById<View>(R.id.text_name_meditation) as TextView).text = nameMeditation
             /// Load cover image (we use Picasso Library)
@@ -78,7 +87,7 @@ class MeditationActivity : AppCompatActivity() {
             mediaPlayer!!.setOnPreparedListener { mp -> //start media player
                 mp.start()
                 // link seekbar to bar view
-                seekBar = findViewById<View>(R.id.seekBar) as SeekBar
+                seekBar = findViewById<View>(R.id.seekBar_meditation) as SeekBar
                 //update seekbar
                 mRunnable.run()
                 //dismiss dialog
@@ -141,15 +150,30 @@ class MeditationActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun play(view: View?) {
+    private fun playPauseBtn() {
+        playPause = when (playPause) {
+            true -> {
+                play()
+                mBtnPlayPause.setImageResource(R.mipmap.ic_btn_pause)
+                false
+            }
+            false -> {
+                pause()
+                mBtnPlayPause.setImageResource(R.mipmap.ic_btn_play)
+                true
+            }
+        }
+    }
+
+    fun play() {
         mediaPlayer!!.start()
     }
 
-    fun pause(view: View?) {
+    fun pause() {
         mediaPlayer!!.pause()
     }
 
-    fun stop(view: View?) {
+    fun stop() {
         mediaPlayer!!.seekTo(0)
         mediaPlayer!!.pause()
     }
@@ -172,10 +196,8 @@ class MeditationActivity : AppCompatActivity() {
     }
 
     fun seekBackward(view: View?) {
-
         //set seek time
         val seekBackwardTime = 5000
-
         // get current song position
         val currentPosition = mediaPlayer!!.currentPosition
         // check if seekBackward time is greater than 0 sec
@@ -198,6 +220,7 @@ class MeditationActivity : AppCompatActivity() {
         finish()
     }
 
+    // отображение времени
     private fun getTimeString(millis: Long): String {
         val buf = StringBuffer()
         val hours = millis / (1000 * 60 * 60)
@@ -210,10 +233,6 @@ class MeditationActivity : AppCompatActivity() {
             .append(":")
             .append(String.format("%02d", seconds))
         return buf.toString()
-    }
-
-    companion object {
-
     }
 
 }

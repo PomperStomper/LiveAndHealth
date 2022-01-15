@@ -1,17 +1,44 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.LiveAndHealth" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.LiveAndHealth" parent="Theme.AppCompat.DayNight">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/grey_light</item>
-        <item name="colorPrimaryVariant">@color/grey_dark</item>
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">@color/purple_800</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/black</item>
         <item name="colorSecondaryVariant">@color/black</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="colorAccent">@color/yellow_1</item>
+        <item name="colorAccent">@color/orange</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/purple_800</item>
         <!-- Customize your theme here. -->
+        <item name="actionBarTheme">@style/ActionBar</item>
     </style>
+
+    <style name="ActionBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+
+    <style name="Theme.LiveAndHealth.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.LiveAndHealth.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.LiveAndHealth.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppButton" parent="Theme.LiveAndHealth">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">100dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@drawable/selector_btn</item>
+    </style>
+
 </resources>

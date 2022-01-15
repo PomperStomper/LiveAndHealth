@@ -4,6 +4,7 @@
     android:id="@+id/main_audio_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MeditationActivity">
 
 
@@ -21,7 +22,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:alpha="0.7"
-        android:background="@color/blue_10_trans"
+        android:background="@color/purple_800_trans"
         android:orientation="vertical"
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
@@ -36,7 +37,7 @@
             android:layout_marginStart="5dp"
             android:paddingVertical="20dp"
             android:text="@string/app_name"
-            android:textColor="@color/blue_800"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
     </RelativeLayout>
@@ -44,10 +45,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue_10_trans"
+        android:layout_alignTop="@+id/controls"
         android:alpha="0.7"
-        android:layout_alignTop="@+id/controls">
-    </LinearLayout>
+        android:background="@color/purple_800_trans"></LinearLayout>
 
 
     <LinearLayout
@@ -76,23 +76,10 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pause"
-            android:layout_weight="1"
-            android:id="@+id/pause"
-            android:onClick="pause"
-            android:src="@mipmap/ic_btn_pause"
-            android:background="@null"
-            android:contentDescription="TODO"/>
-
-        <ImageButton
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/play"
             android:layout_weight="1"
-            android:id="@+id/play"
-            android:onClick="play"
-            android:src="@mipmap/ic_btn_play"
+            android:id="@+id/play_pause"
+            android:src="@mipmap/ic_btn_pause"
             android:background="@null"
             android:contentDescription="@string/app_name"/>
 
@@ -123,23 +110,26 @@
             android:layout_height="wrap_content"
             android:id="@+id/currentTime"
             android:text="@string/_00_00_00"
-            android:textColor="@color/blue_800"
+            android:textColor="@color/white"
             android:padding="5dp"/>
 
         <SeekBar
+            android:id="@+id/seekBar_meditation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/seekBar"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:layout_weight="1"/>
+            android:splitTrack="false"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="100000000"
+            android:progressDrawable="@drawable/seekbar_style"
+            android:thumb="@drawable/slider_small"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/totalTime"
             android:text="@string/_00_00_00"
-            android:textColor="@color/blue_800"
+            android:textColor="@color/white"
             android:padding="5dp"/>
 
     </LinearLayout>
