@@ -12,7 +12,8 @@ import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.DRAWABLE_LIST
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.MAIN_TAG
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_TAG
 import ru.pankratov.trofimov.liveandhealth.adapters.ListWorkoutAdapter
-import ru.pankratov.trofimov.liveandhealth.models.ListMeditation
+import ru.pankratov.trofimov.liveandhealth.models.ListWorkout
+import java.io.*
 
 class WorkoutActivity : AppCompatActivity() {
 
@@ -22,7 +23,8 @@ class WorkoutActivity : AppCompatActivity() {
 
     private var indexActivity: Int = 0
 
-    private var workoutlist = arrayListOf<ListMeditation>()
+    private var workoutlist = arrayListOf<ListWorkout>()
+    var mAdapter: ListWorkoutAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,7 @@ class WorkoutActivity : AppCompatActivity() {
         indexActivity = intent.getIntExtra(MAIN_TAG, 0)
         // находим объекты
         mImageWourkout = findViewById(R.id.image_workout)
-        mListWourkout = findViewById(R.id.listView_meditation)
+        mListWourkout = findViewById(R.id.listView_workout)
         mTextZagolovok = findViewById(R.id.textView_head_meditation)
 
         // получаем список категорий
@@ -45,20 +47,21 @@ class WorkoutActivity : AppCompatActivity() {
         mTextZagolovok.typeface = fontAppZagolovok
         mTextZagolovok.text = mainListArray[indexActivity]
 
-        // добавляем в список картинки и названия
-        inputExerciseInList()
-
         // прокрутка списка
         val n = 0 // прокручиваем до начала
         mListWourkout.smoothScrollToPosition(n)
         // адаптер
-        val mAdapter = ListWorkoutAdapter(workoutlist, this)
+        mAdapter = ListWorkoutAdapter(workoutlist, this)
         mListWourkout.adapter = mAdapter
         // нажатие на список
         mListWourkout.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
             playActivity(indexActivity, i)
         }
+
+        // добавляем в список картинки и названия
+        inputExerciseInList()
     }
+
     // Заполняем Списки упражнений и описаний из ресурсов
     private fun inputExerciseInList() {
         when (indexActivity) {
@@ -81,7 +84,7 @@ class WorkoutActivity : AppCompatActivity() {
     }
     private fun addWorkoutList(listName: Array<String>, listDescription: Array<String>) {
         for (i in listName.indices) {
-            val value = ListMeditation()
+            val value = ListWorkout()
             value.image = drawableListIcon[indexActivity]
             value.title = listName[i]
             value.discription = listDescription[i]

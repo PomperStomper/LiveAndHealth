@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object MainObject {
-        const val TAG = "live_tag"
+        const val TAG = "livetag"
         const val MAIN_TAG = "main_tag"
         const val WORKOUT_TAG = "workout_tag"
         const val SCREENDIALOG_TITLE_TAG = "screendialog_title_tag"

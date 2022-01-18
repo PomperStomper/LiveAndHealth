@@ -54,12 +54,19 @@
         app:layout_constraintTop_toTopOf="@+id/guideline6">
 
         <ListView
-            android:id="@+id/listView_meditation"
+            android:id="@+id/listView_workout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="50"
-            android:layout_marginTop="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:divider="@android:color/transparent" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_weight="1"/>
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline

@@ -6,17 +6,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import com.budiyev.android.circularprogressbar.CircularProgressBar
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.SCREENDIALOG_BODY_TAG
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.SCREENDIALOG_TITLE_TAG
 import ru.pankratov.trofimov.liveandhealth.controls.CircularRotateAnimation
 import ru.pankratov.trofimov.liveandhealth.dialogs.ScreenDialog
-import android.os.SystemClock
 import android.widget.*
 import pl.droidsonroids.gif.GifImageView
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_TAG
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.log
+import android.widget.LinearLayout
+
+import android.util.TypedValue
+
+import android.widget.TextView
+
+
+
 
 
 class BreathActivity : AppCompatActivity() {
@@ -41,21 +48,22 @@ class BreathActivity : AppCompatActivity() {
     private var countDownTimer: CountDownTimer? = null
     private var animationSlider: CircularRotateAnimation? = null
 
+
     var inhale = false
     var exhalation = false
 
-    // Эти 5 параметров необходимо получать из базы данных для каждого упражнения
-    val quantity = 1                        // кол-во повторений
-    val TIME_INHALE: Long = 5000            // время вдоха
-    val TIME_DELAY_1: Long = 3000           // время 1й задержки
-    val TIME_EXHALATION: Long = 4000        // время выдоха
-    val TIME_DELAY_2: Long = 2000           // время 2й задежки
+    // Эти 5 параметров получаем из списков для каждого упражнения
+    var quantity = 0                     // кол-во повторений
+    var TIME_INHALE: Long = 0            // время вдоха
+    var TIME_DELAY_1: Long = 0           // время 1й задержки
+    var TIME_EXHALATION: Long = 0        // время выдоха
+    var TIME_DELAY_2: Long = 0           // время 2й задежки
 
 
 
-    val TIME_BREATH: Long = TIME_INHALE + TIME_DELAY_1 + TIME_EXHALATION + TIME_DELAY_2 // время одного цикла
-    val TIME_EXERCISE: Long = TIME_BREATH * quantity    // общее время упражнения
-    var TIME_PASSED = 0                    // сколько прошло от общего времени
+    var TIME_BREATH: Long = 0            // время одного цикла
+    var TIME_EXERCISE: Long = 0          // общее время упражнения
+    var TIME_PASSED = 0                  // сколько прошло от общего времени
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,11 +72,17 @@ class BreathActivity : AppCompatActivity() {
         setContentView(R.layout.activity_breath)
         //получаем интент
         val intent = intent
-        val index = intent.getIntExtra(MainActivity.WORKOUT_TAG, 0)
+        val index = intent.getIntExtra(WORKOUT_TAG, 0)
 
-        // дыхание - заполняем список ссылок
-        val listName = resources.getStringArray(R.array.list_breath_exercise_array)
-        val listLinkBreathArray = resources.getStringArray(R.array.list_meditation_audio_array)
+        // получаем данные из списков
+        val title = getTitleBreath(index)
+        quantity = TIMES_QUANTITY[index]
+        TIME_INHALE = TIMES_INHALE[index]
+        TIME_DELAY_1 = TIMES_DELAY_1[index]
+        TIME_EXHALATION = TIMES_EXHALATION[index]
+        TIME_DELAY_2 = TIMES_DELAY_2[index]
+        TIME_BREATH = TIME_INHALE + TIME_DELAY_1 + TIME_EXHALATION + TIME_DELAY_2 // время одного цикла
+        TIME_EXERCISE = TIME_BREATH * quantity    // общее время упражнения
 
         mTextNameBreath = findViewById(R.id.text_name_exercise_breath)
         mTextBreath = findViewById(R.id.text_breath)
@@ -89,12 +103,12 @@ class BreathActivity : AppCompatActivity() {
         //устанавливаем начальное время упражнения
         mTotalTime.text = getTimeString(TIME_EXERCISE)
         // устанавливанем название
-        mTextNameBreath.text = listName[index]
+        mTextNameBreath.text = title
         // показываем интервалы
-        mNumberInhale.text = ": " + (TIME_INHALE / 1000).toString() + "с."
-        mNumberDelay1.text = ": " + (TIME_DELAY_1 / 1000).toString() + "с."
-        mNumberExhalation.text = ": " + (TIME_EXHALATION / 1000).toString() + "с."
-        mNumberDelay2.text = ": " + (TIME_DELAY_2 / 1000).toString() + "с."
+        mNumberInhale.text = (TIME_INHALE / 1000).toString() + "с."
+        mNumberDelay1.text = (TIME_DELAY_1 / 1000).toString() + "с."
+        mNumberExhalation.text = (TIME_EXHALATION / 1000).toString() + "с."
+        mNumberDelay2.text = (TIME_DELAY_2 / 1000).toString() + "с."
         // скрываем бегунок
         mSlider.visibility = View.GONE
         // + фирменный шрифт
@@ -118,6 +132,13 @@ class BreathActivity : AppCompatActivity() {
 //        screenDialog("Это диалог", "здесь будет текст сообщения")
 
     }
+    // получаем название
+    private fun getTitleBreath(index: Int): String? {
+        val listTitle = resources.getStringArray(R.array.list_breath_exercise_array)
+        return listTitle[index]
+    }
+
+
     // обновление ПрогрессБар
     private val mHandler = Handler()
     private val mRunnable: Runnable = object : Runnable {
@@ -133,7 +154,7 @@ class BreathActivity : AppCompatActivity() {
         }
     }
 
-    fun start() {
+    private fun start() {
         startExerciseTimer()
         mSlider.startAnimation(animationSlider)
         mSlider.visibility = View.VISIBLE
@@ -280,6 +301,14 @@ class BreathActivity : AppCompatActivity() {
         super.onBackPressed()
         countDownTimer?.cancel()
         stopAll()
+    }
+
+    companion object Breath {
+        val TIMES_INHALE = arrayListOf<Long>(5000, 3000, 4000, 6000, 6000, 6000, 6000, 0)
+        val TIMES_DELAY_1 = arrayListOf<Long>(2000, 3000, 5000, 6000, 6000, 6000, 6000, 0)
+        val TIMES_EXHALATION = arrayListOf<Long>(4000, 2000, 3000, 6000, 6000, 6000, 6000, 0)
+        val TIMES_DELAY_2 = arrayListOf<Long>(3000, 4000, 5000, 6000, 6000, 6000, 6000, 0)
+        val TIMES_QUANTITY = arrayListOf( 1, 2, 3, 10, 10, 10, 10, 0)
     }
 
 }
