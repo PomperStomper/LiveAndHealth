@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity"
     android:orientation="vertical">
 
@@ -22,7 +23,7 @@
         android:orientation="horizontal" >
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_home_main"
+            android:id="@+id/btn_conditions_main"
             android:onClick="changeFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,14 +31,14 @@
             android:paddingVertical="10dp"
             android:layout_marginTop="1dp"
             android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:text="@string/main_text"
+            android:textColor="@color/grey_light"
+            android:text="@string/main_focus_text"
             android:textSize="10sp"
-            android:background="@drawable/selector_btn_main"
-            android:drawableTop="@drawable/ic_home" />
+            android:background="@drawable/btn_main_off"
+            android:drawableTop="@drawable/ic_focus_off" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_statistics_main"
+            android:id="@+id/btn_breaths_main"
             android:onClick="changeFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,26 +46,41 @@
             android:layout_marginTop="1dp"
             android:paddingVertical="10dp"
             android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:text="@string/statistics_text"
+            android:textColor="@color/grey_light"
+            android:text="@string/main_breath_text"
             android:textSize="10sp"
-            android:background="@drawable/selector_btn_main"
-            android:drawableTop="@drawable/ic_statistics" />
+            android:background="@drawable/btn_main_off"
+            android:drawableTop="@drawable/ic_breath_off" />
 
         <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_settings_main"
-                android:onClick="changeFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="1dp"
-                android:paddingVertical="10dp"
-                android:layout_gravity="center"
-                android:textColor="@color/white"
-                android:text="@string/settings_text"
-                android:textSize="10sp"
-                android:background="@drawable/selector_btn_main"
-                android:drawableTop="@drawable/ic_settings" />
+            android:id="@+id/btn_meditations_main"
+            android:onClick="changeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="1dp"
+            android:paddingVertical="10dp"
+            android:layout_gravity="center"
+            android:textColor="@color/grey_light"
+            android:text="@string/main_meditation_text"
+            android:textSize="10sp"
+            android:background="@drawable/btn_main_off"
+            android:drawableTop="@drawable/ic_meditation_off" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_settings_main"
+            android:onClick="changeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="1dp"
+            android:paddingVertical="10dp"
+            android:layout_gravity="center"
+            android:textColor="@color/grey_light"
+            android:text="@string/main_settings_text"
+            android:textSize="10sp"
+            android:background="@drawable/btn_main_off"
+            android:drawableTop="@drawable/ic_settings_off" />
 
     </LinearLayout>
 

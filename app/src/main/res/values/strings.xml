@@ -1,24 +1,24 @@
 <resources>
     <string name="app_name">LiveAndHealth</string>
-// MAIN
-    <string name="main_text">главная</string>
-    <string name="statistics_text">статистика</string>
-    <string name="settings_text">настройки</string>
+    // MAIN
+    <string name="main_focus_text">состояния</string>
+    <string name="main_breath_text">дыхание</string>
+    <string name="main_meditation_text">медитации</string>
+    <string name="main_settings_text">настройки</string>
 
-// Главный список категорий (НАЗВАНИЯ)
-    <string-array name="main_list_array">
-        <item>ЗРЕНИЕ</item>
-        <item>ДЫХАНИЕ</item>
-        <item>МЕДИТАЦИИ</item>
-    </string-array>
-// Главный список категорий (ОПИСАНИЯ)
+    // Главный список категорий (НАЗВАНИЯ)
+    <string name="conditions_text">ФОКУС СОСТОЯНИЙ</string>
+    <string name="breaths_text">ДЫХАНИЕ</string>
+    <string name="meditations_text">МЕДИТАЦИИ</string>
+
+    // Главный список категорий (ОПИСАНИЯ)
     <string-array name="main_list_discription_array">
         <item>10 упражнений, которые помогу улучшить зрение и снять усталость глаз</item>
         <item>Гимнастики дыхания улучшающие кровобращение, поднимающие тонус</item>
         <item>Помогают снять стресс, улучшить сон и восстановить хуй знает что ещё</item>
     </string-array>
 
-// СИСТЕМНЫЕ, ПРЕДУПРЕЖДЕНИЯ, ОШИБКИ
+    // СИСТЕМНЫЕ, ПРЕДУПРЕЖДЕНИЯ, ОШИБКИ
     <string name="title_activity_eyes">EyesActivity</string>
     <string name="title_activity_breath">BreathActivity</string>
     <string name="title_activity_meditation">MeditationActivity</string>
@@ -32,7 +32,7 @@
     <string name="text_chtotoposhlonetak">Что-то пошло не так</string>
 
 
-// ЗРЕНИЕ
+    // ЗРЕНИЕ
     <string-array name="list_eyes_exercise_array">
         <item>Разминка</item>
         <item>Упражнение на фокусировку</item>
@@ -50,7 +50,7 @@
         <item>Упражнение перед сном</item>
     </string-array>
 
-// ДЫХАНИЕ
+    // ДЫХАНИЕ
     <string-array name="list_breath_exercise_array">
         <item>Дыхание \"Огня\"</item>
         <item>Дыхание поднимающее тонус</item>
@@ -76,7 +76,7 @@
     <string name="text_exhalation">ВЫДОХ</string>
     <string name="text_delay">ЗАДЕРЖКА</string>
 
-// МЕДИТАЦИИ
+    // МЕДИТАЦИИ
     <string-array name="list_meditation_exercise_array">
         <item>Медитация \"Лабиринт\"</item>
         <item>Медитация \"Полет\"</item>
@@ -106,6 +106,8 @@
         <item>https://pankratov.store/liveAndHealth/img/01_meditation_maze_img.jpg</item>
         <item>https://pankratov.store/liveAndHealth/img/01_meditation_maze_img.jpg</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

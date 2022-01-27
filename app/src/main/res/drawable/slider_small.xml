@@ -8,9 +8,9 @@
         android:topLeftRadius="2dp"
         android:topRightRadius="2dp"/>
     <gradient
-        android:endColor="@color/orange"
+        android:endColor="@color/orange_500"
         android:centerColor="@color/red"
-        android:startColor="@color/orange"
+        android:startColor="@color/orange_500"
         android:type="linear"
         android:useLevel="false" />
 

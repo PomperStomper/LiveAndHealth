@@ -3,12 +3,23 @@
     <color name="black">#232136</color>
     <color name="white">#FEFEFE</color>
 
-    <color name="purple_200">#84569D</color>
-    <color name="purple_500">#7060A6</color>
+    <color name="purple_200">#9C27B0</color>
+    <color name="purple_500">#7541A4</color>
     <color name="purple_800">#454472</color>
+    <color name="purple_500_trans">#86454472</color>
     <color name="purple_800_trans">#AB454472</color>
     <color name="grey_light">#ADAFB3</color>
     <color name="grey_dark">#38384D</color>
+
+
+    <color name="blue_500">#5A79BB</color>
+    <color name="blue_700">#1E4089</color>
+
+    <color name="green_500">#1BA645</color>
+    <color name="green_700">#147932</color>
+
+    <color name="orange_500">#E57E4E</color>
+    <color name="orange_700">#D67465</color>
 
 
     <color name="blue_800">#03B6FC</color>
@@ -21,7 +32,6 @@
 
 
 
-    <color name="orange">#D67465</color>
     <color name="red">#9A4336</color>
 
 
