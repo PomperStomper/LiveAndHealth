@@ -7,7 +7,7 @@
     <string name="main_settings_text">настройки</string>
 
     // Главный список категорий (НАЗВАНИЯ)
-    <string name="conditions_text">ФОКУС СОСТОЯНИЙ</string>
+    <string name="conditions_text">ФОКУСЫ СОСТОЯНИЙ</string>
     <string name="breaths_text">ДЫХАНИЕ</string>
     <string name="meditations_text">МЕДИТАЦИИ</string>
 

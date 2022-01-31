@@ -301,6 +301,7 @@ class BreathActivity : AppCompatActivity() {
         super.onBackPressed()
         countDownTimer?.cancel()
         stopAll()
+        finish()
     }
 
     companion object Breath {

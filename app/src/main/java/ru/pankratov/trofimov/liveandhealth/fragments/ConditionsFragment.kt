@@ -39,15 +39,7 @@ class ConditionsFragment : Fragment() {
 
         mListConditionsView = inflatedView.findViewById(R.id.listView_conditions)
 
-
-        for (i in 0..10) {
-            val value = CondExerModelList()
-            value.image = R.mipmap.ic_btn_pause
-            value.title = "title $i"
-            value.discription = "discription"
-            conditionslist.add(value)
-        }
-        log("list: $conditionslist")
+        addCategories()
 
         // адаптер
         val ctx = context
@@ -58,7 +50,43 @@ class ConditionsFragment : Fragment() {
         return inflatedView
     }
 
+    private fun addCategories() {
+        for (i in 0..3) {
+            val value = CondExerModelList()
+            value.image = DRAWABLES_ICONS_FOCUS[i]
+            value.imageCard = DRAWABLES_IMG_FOCUS[i]
+            value.title = NAMES_FOCUS[i]
+            value.discription = DISCRIPTIONS_FOCUS[i]
+            conditionslist.add(value)
+        }
+        log("list: $conditionslist")
+    }
+
     companion object ConditionObjects {
+        val DRAWABLES_ICONS_FOCUS = arrayOf(
+            R.drawable.fireimg,
+            R.drawable.waterimg,
+            R.drawable.earthimg,
+            R.drawable.airimg,
+        )
+        val DRAWABLES_IMG_FOCUS = arrayOf(
+            R.drawable.fire2img,
+            R.drawable.water2img,
+            R.drawable.earth2img,
+            R.drawable.air2img,
+        )
+        val DISCRIPTIONS_FOCUS = arrayOf(
+            "Имидж Искусство Благотворительность",
+            "Семья Секс Духовность",
+            "Финансы Работа Здоровье",
+            "Знания Любовь Дружба",
+        )
+        val NAMES_FOCUS = arrayOf(
+            "ОГОНЬ",
+            "ВОДА",
+            "ЗЕМЛЯ",
+            "ВОЗДУХ",
+        )
 
     }
 }

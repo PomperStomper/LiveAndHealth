@@ -1,6 +1,7 @@
 package ru.pankratov.trofimov.liveandhealth.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import ru.pankratov.trofimov.liveandhealth.BreathActivity
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_TAG
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.models.BreathExerModelList
 
@@ -46,8 +49,14 @@ class BreathExersiceAdapter(private var conditionslist: List<BreathExerModelList
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bindExersice(conditionslist[position])
-    }
 
+        holder.itemView.setOnClickListener {
+            holder.linear.setBackgroundResource(R.drawable.gradient_for_list_exersice_off)
+            val intent = Intent(ctx, BreathActivity::class.java)
+            intent.putExtra(WORKOUT_TAG, position)
+            ctx.startActivity(intent)
+        }
+    }
 
     override fun getItemCount() = conditionslist.size
 }

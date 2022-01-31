@@ -1,6 +1,7 @@
 package ru.pankratov.trofimov.liveandhealth.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import ru.pankratov.trofimov.liveandhealth.BreathActivity
+import ru.pankratov.trofimov.liveandhealth.MainActivity
+import ru.pankratov.trofimov.liveandhealth.MeditationActivity
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.models.MeditExerModelList
 
@@ -46,6 +50,13 @@ class MeditationExersiceAdapter(private var meditationslist: ArrayList<MeditExer
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bindExersice(meditationslist[position])
+
+        holder.itemView.setOnClickListener {
+            holder.linear.setBackgroundResource(R.drawable.gradient_for_list_exersice_off)
+            val intent = Intent(ctx, MeditationActivity::class.java)
+            intent.putExtra(MainActivity.WORKOUT_TAG, position)
+            ctx.startActivity(intent)
+        }
     }
 
 

@@ -1,12 +1,17 @@
 package ru.pankratov.trofimov.liveandhealth
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -23,19 +28,35 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mMeditation: AppCompatButton
     private lateinit var mSettings: AppCompatButton
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        supportActionBar?.hide()
-
-        window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        this.window.apply {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            statusBarColor = Color.TRANSPARENT
+        }
 
         mFocus = findViewById(R.id.btn_conditions_main)
         mBreath = findViewById(R.id.btn_breaths_main)
         mMeditation = findViewById(R.id.btn_meditations_main)
         mSettings = findViewById(R.id.btn_settings_main)
+        mFocus.setOnClickListener {
+            changeFragment(1)
+        }
+        mBreath.setOnClickListener {
+            changeFragment(2)
+        }
+        mMeditation.setOnClickListener {
+            changeFragment(3)
+        }
+        mSettings.setOnClickListener {
+            changeFragment(4)
+        }
 
         // + фирменный шрифт
         val fontAppZagolovok = Typeface.createFromAsset(assets, "Comfortaa-Regular.ttf")
@@ -47,7 +68,6 @@ class MainActivity : AppCompatActivity() {
 
         startFirstFragment()
     }
-
 
     private fun startFirstFragment() {
         val fragment: Fragment = ConditionsFragment()
@@ -62,22 +82,22 @@ class MainActivity : AppCompatActivity() {
         mFocus.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_focus_on, 0, 0)
     }
 
-    fun changeFragment(view: View) {
+    private fun changeFragment(id: Int) {
         var fragment: Fragment = ConditionsFragment()
-        when(view.id) {
-            R.id.btn_conditions_main -> {
+        when(id) {
+            1 -> {
                 fragment = ConditionsFragment()
                 changeColor(1)
             }
-            R.id.btn_breaths_main -> {
+            2 -> {
                 fragment = BreathsFragment()
                 changeColor(2)
             }
-            R.id.btn_meditations_main -> {
+            3 -> {
                 fragment = MeditationsFragment()
                 changeColor(3)
             }
-            R.id.btn_settings_main -> {
+            4 -> {
                 fragment = SettingsFragment()
                 changeColor(4)
             }

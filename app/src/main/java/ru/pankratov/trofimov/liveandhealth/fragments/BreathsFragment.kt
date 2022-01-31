@@ -14,7 +14,6 @@ import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.models.BreathExerModelList
 import ru.pankratov.trofimov.liveandhealth.adapters.BreathExersiceAdapter
 
-
 class BreathsFragment : Fragment() {
 
     private lateinit var mTextHead: TextView
@@ -55,8 +54,7 @@ class BreathsFragment : Fragment() {
         mListBreathsView.setHasFixedSize(true)
         mListBreathsView.adapter = mAdapterBreaths
 
-
-
         return inflatedView
     }
+
 }

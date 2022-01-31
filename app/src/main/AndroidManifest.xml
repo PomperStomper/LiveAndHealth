@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveAndHealth">
         <activity
+            android:name=".ConditionActivity"
+            android:exported="false" />
+        <activity
             android:name=".MeditationActivity"
             android:exported="false" />
         <activity
