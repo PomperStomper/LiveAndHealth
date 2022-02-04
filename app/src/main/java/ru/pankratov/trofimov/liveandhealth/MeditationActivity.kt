@@ -2,16 +2,20 @@ package ru.pankratov.trofimov.liveandhealth
 
 import android.app.Activity
 import android.app.ProgressDialog
+import android.graphics.Color
 import android.media.MediaPlayer
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.widget.*
+import androidx.annotation.RequiresApi
 import com.squareup.picasso.Picasso
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_TAG
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.MEDITATION_TAG
 import java.io.IOException
 
 class MeditationActivity : AppCompatActivity() {
@@ -23,14 +27,20 @@ class MeditationActivity : AppCompatActivity() {
 
     var playPause = false
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        supportActionBar?.hide()
+        this.window.apply {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            statusBarColor = Color.TRANSPARENT
+        }
 
         // get data from main activity intent
         val intent = intent
-        val index = intent.getIntExtra(WORKOUT_TAG, 0)
+        val index = intent.getIntExtra(MEDITATION_TAG, 0)
 
         // медитации - заполняем списки ссылок на название, аудио и картинки
         val listName = resources.getStringArray(R.array.list_meditation_exercise_array)

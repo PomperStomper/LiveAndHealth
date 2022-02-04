@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.pankratov.trofimov.liveandhealth.BreathActivity
 import ru.pankratov.trofimov.liveandhealth.MainActivity
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.MEDITATION_TAG
 import ru.pankratov.trofimov.liveandhealth.MeditationActivity
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.models.MeditExerModelList
@@ -54,7 +55,7 @@ class MeditationExersiceAdapter(private var meditationslist: ArrayList<MeditExer
         holder.itemView.setOnClickListener {
             holder.linear.setBackgroundResource(R.drawable.gradient_for_list_exersice_off)
             val intent = Intent(ctx, MeditationActivity::class.java)
-            intent.putExtra(MainActivity.WORKOUT_TAG, position)
+            intent.putExtra(MEDITATION_TAG, position)
             ctx.startActivity(intent)
         }
     }

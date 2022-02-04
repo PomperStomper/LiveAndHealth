@@ -1,8 +1,6 @@
 package ru.pankratov.trofimov.liveandhealth
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Build
@@ -174,16 +172,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun playActivity(c0: Int) {
-        val intent = Intent(this, WorkoutActivity::class.java)
-        intent.putExtra(MAIN_TAG ,c0)
-        startActivity(intent)
-    }
-
     companion object MainObject {
         const val TAG = "livetag"
         const val MAIN_TAG = "main_tag"
-        const val WORKOUT_TAG = "workout_tag"
+        const val FOCUS_TAG = "focus_tag"
+        const val BREATH_TAG = "breath_tag"
+        const val MEDITATION_TAG = "meditation_tag"
         const val SCREENDIALOG_TITLE_TAG = "screendialog_title_tag"
         const val SCREENDIALOG_BODY_TAG = "screendialog_body_tag"
 
@@ -191,12 +185,6 @@ class MainActivity : AppCompatActivity() {
         fun log(text: String) {
             Log.d(TAG, text)
         }
-
-//        val DRAWABLE_LIST_IMAGE_MAIN = arrayListOf(
-//            R.drawable.eyes,
-//            R.drawable.breath,
-//            R.drawable.meditation
-//        )
 
     }
 }

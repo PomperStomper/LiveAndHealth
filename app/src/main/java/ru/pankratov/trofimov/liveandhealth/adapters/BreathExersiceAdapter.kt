@@ -11,7 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.pankratov.trofimov.liveandhealth.BreathActivity
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_TAG
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.BREATH_TAG
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.models.BreathExerModelList
 
@@ -53,7 +53,7 @@ class BreathExersiceAdapter(private var conditionslist: List<BreathExerModelList
         holder.itemView.setOnClickListener {
             holder.linear.setBackgroundResource(R.drawable.gradient_for_list_exersice_off)
             val intent = Intent(ctx, BreathActivity::class.java)
-            intent.putExtra(WORKOUT_TAG, position)
+            intent.putExtra(BREATH_TAG, position)
             ctx.startActivity(intent)
         }
     }

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.pankratov.trofimov.liveandhealth.BreathActivity
 import ru.pankratov.trofimov.liveandhealth.ConditionActivity
 import ru.pankratov.trofimov.liveandhealth.MainActivity
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.FOCUS_TAG
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.models.CondExerModelList
 
@@ -53,7 +54,7 @@ class ConditionExersiceAdapter(private var conditionslist: List<CondExerModelLis
 
         holder.itemView.setOnClickListener {
             val intent = Intent(ctx, ConditionActivity::class.java)
-            intent.putExtra(MainActivity.WORKOUT_TAG, position)
+            intent.putExtra(FOCUS_TAG, position)
             ctx.startActivity(intent)
         }
     }

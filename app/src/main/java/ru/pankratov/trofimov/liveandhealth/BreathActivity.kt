@@ -14,16 +14,9 @@ import ru.pankratov.trofimov.liveandhealth.controls.CircularRotateAnimation
 import ru.pankratov.trofimov.liveandhealth.dialogs.ScreenDialog
 import android.widget.*
 import pl.droidsonroids.gif.GifImageView
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.WORKOUT_TAG
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.log
-import android.widget.LinearLayout
-
-import android.util.TypedValue
-
 import android.widget.TextView
-
-
-
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.BREATH_TAG
 
 
 class BreathActivity : AppCompatActivity() {
@@ -72,7 +65,7 @@ class BreathActivity : AppCompatActivity() {
         setContentView(R.layout.activity_breath)
         //получаем интент
         val intent = intent
-        val index = intent.getIntExtra(WORKOUT_TAG, 0)
+        val index = intent.getIntExtra(BREATH_TAG, 0)
 
         // получаем данные из списков
         val title = getTitleBreath(index)
