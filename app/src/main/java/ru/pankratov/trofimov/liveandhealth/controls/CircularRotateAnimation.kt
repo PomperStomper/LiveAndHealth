@@ -1,6 +1,7 @@
 package ru.pankratov.trofimov.liveandhealth.controls
 
 import android.content.Context
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
@@ -17,12 +18,13 @@ class CircularRotateAnimation(v: View, r: Float) : Animation() {
     private var cy = 0f             // центр
     private var prevX = 0f
     private var prevY = 0f          // предыдущее положение x,y изображения во время анимации
-    private val r: Float = r        // радиус круга
+    private val radius: Float = r        // радиус круга
 
     private var prevDx = 0f
     private var prevDy = 0f
 
     var progress = 0F
+
 
     override fun willChangeBounds(): Boolean {
         return true
@@ -49,8 +51,8 @@ class CircularRotateAnimation(v: View, r: Float) : Animation() {
         val angleRad = Math.toRadians(angleDeg.toDouble()).toFloat()
 
         // r = радиус, cx и cy = центр точки, a = угол (радиана)
-        val x = (cx + r * cos(angleRad.toDouble())).toFloat()
-        val y = (cy + r * sin(angleRad.toDouble())).toFloat()
+        val x = (cx + radius * cos(angleRad.toDouble())).toFloat()
+        val y = (cy + radius * sin(angleRad.toDouble())).toFloat()
         val dx = prevX - x
         val dy = prevY - y
         prevX = x

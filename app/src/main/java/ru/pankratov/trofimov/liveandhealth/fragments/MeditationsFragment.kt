@@ -44,9 +44,6 @@ class MeditationsFragment : Fragment() {
             meditationslist.add(value)
         }
 
-        mTextHead.text = "Медитации"
-
-
         // адаптер
         val ctx = context
         mAdapterMeditations = ctx?.let { MeditationExersiceAdapter(meditationslist, it) }

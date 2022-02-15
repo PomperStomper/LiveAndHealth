@@ -36,7 +36,6 @@ class ConditionsFragment : Fragment() {
         val fontAppZagolovok = Typeface.createFromAsset(resources.assets, "Comfortaa-Bold.ttf")
         mTextHead.typeface = fontAppZagolovok
 
-
         mListConditionsView = inflatedView.findViewById(R.id.listView_conditions)
 
         addCategories()
@@ -51,12 +50,15 @@ class ConditionsFragment : Fragment() {
     }
 
     private fun addCategories() {
+        val listNames = resources.getStringArray(R.array.list_focus_exercise_array)
+        val listDiscriptions = resources.getStringArray(R.array.list_focus_description_array)
+
         for (i in 0..3) {
             val value = CondExerModelList()
             value.image = DRAWABLES_ICONS_FOCUS[i]
             value.imageCard = DRAWABLES_IMG_FOCUS[i]
-            value.title = NAMES_FOCUS[i]
-            value.discription = DISCRIPTIONS_FOCUS[i]
+            value.title = listNames[i]
+            value.discription = listDiscriptions[i]
             conditionslist.add(value)
         }
         log("list: $conditionslist")
@@ -75,18 +77,5 @@ class ConditionsFragment : Fragment() {
             R.drawable.earth2img,
             R.drawable.air2img,
         )
-        val DISCRIPTIONS_FOCUS = arrayOf(
-            "Имидж Искусство Благотворительность",
-            "Семья Секс Духовность",
-            "Финансы Работа Здоровье",
-            "Знания Любовь Дружба",
-        )
-        val NAMES_FOCUS = arrayOf(
-            "ОГОНЬ",
-            "ВОДА",
-            "ЗЕМЛЯ",
-            "ВОЗДУХ",
-        )
-
     }
 }

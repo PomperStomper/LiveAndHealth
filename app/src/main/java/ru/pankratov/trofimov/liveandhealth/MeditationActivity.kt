@@ -3,6 +3,7 @@ package ru.pankratov.trofimov.liveandhealth
 import android.app.Activity
 import android.app.ProgressDialog
 import android.graphics.Color
+import android.graphics.Typeface
 import android.media.MediaPlayer
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,8 @@ import java.io.IOException
 class MeditationActivity : AppCompatActivity() {
 
     private lateinit var mBtnPlayPause: ImageButton
+    private lateinit var mTextNameBreath: TextView
+    private lateinit var mTextDiscriptionFullBreath: TextView
 
     private var mediaPlayer: MediaPlayer? = null
     private var seekBar: SeekBar? = null
@@ -44,15 +47,14 @@ class MeditationActivity : AppCompatActivity() {
 
         // медитации - заполняем списки ссылок на название, аудио и картинки
         val listName = resources.getStringArray(R.array.list_meditation_exercise_array)
+        val listDiscr = resources.getStringArray(R.array.list_meditation_description_full_array)
         val listAudioMeditationArray = resources.getStringArray(R.array.list_meditation_audio_array)
         val listImageMeditationArray = resources.getStringArray(R.array.list_meditation_image_array)
         // получаем нужное из списков
         val nameMeditation = listName[index]
+        val discriptionMeditation = listDiscr[index]
         val pathSong = listAudioMeditationArray[index]
         val pathImg = listImageMeditationArray[index]
-
-
-
 
         // create a media player
         mediaPlayer = MediaPlayer()
@@ -79,13 +81,21 @@ class MeditationActivity : AppCompatActivity() {
 
             supportActionBar?.hide()
 
+            // название и описание
+            mTextNameBreath = findViewById(R.id.text_name_meditation)
+            mTextNameBreath.text = nameMeditation
+            mTextDiscriptionFullBreath = findViewById(R.id.text_discription_full_meditation)
+            mTextDiscriptionFullBreath.text = discriptionMeditation
+            // + фирменный шрифт
+            val fontApp = Typeface.createFromAsset(assets, "Comfortaa-Bold.ttf")
+            mTextNameBreath.typeface = fontApp
+            mTextDiscriptionFullBreath.typeface = fontApp
+
             mBtnPlayPause = findViewById(R.id.play_pause)
             mBtnPlayPause.setOnClickListener() {
                 playPauseBtn()
             }
 
-            // display title
-            (findViewById<View>(R.id.text_name_meditation) as TextView).text = nameMeditation
             /// Load cover image (we use Picasso Library)
 
             // Get image view

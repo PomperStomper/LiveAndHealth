@@ -1,12 +1,15 @@
 package ru.pankratov.trofimov.liveandhealth
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.view.View
+import android.view.WindowManager
 import com.budiyev.android.circularprogressbar.CircularProgressBar
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.SCREENDIALOG_BODY_TAG
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.SCREENDIALOG_TITLE_TAG
@@ -14,10 +17,15 @@ import ru.pankratov.trofimov.liveandhealth.controls.CircularRotateAnimation
 import ru.pankratov.trofimov.liveandhealth.dialogs.ScreenDialog
 import android.widget.*
 import pl.droidsonroids.gif.GifImageView
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.log
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.BREATH_TAG
-
+import android.util.DisplayMetrics
+import android.view.WindowInsets
+import android.app.Activity
+import android.graphics.Insets
+import android.view.ViewGroup
+import ru.pankratov.trofimov.liveandhealth.dialogs.StartBreathDialog
 
 class BreathActivity : AppCompatActivity() {
 
@@ -58,17 +66,27 @@ class BreathActivity : AppCompatActivity() {
     var TIME_EXERCISE: Long = 0          // общее время упражнения
     var TIME_PASSED = 0                  // сколько прошло от общего времени
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_breath)
-        //получаем интент
+        // прозрачный статус бар
+        this.window.apply {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            statusBarColor = Color.TRANSPARENT
+        }
+
+        //получаем интент (номер упражнения)
         val intent = intent
         val index = intent.getIntExtra(BREATH_TAG, 0)
 
         // получаем данные из списков
         val title = getTitleBreath(index)
+
         quantity = TIMES_QUANTITY[index]
         TIME_INHALE = TIMES_INHALE[index]
         TIME_DELAY_1 = TIMES_DELAY_1[index]
@@ -90,8 +108,8 @@ class BreathActivity : AppCompatActivity() {
         mCurrentTime = findViewById(R.id.currentTime_breath)
         mSlider = findViewById(R.id.slider_breath)
         mRastish = findViewById(R.id.rastish_breath)
-
         progressBar = findViewById(R.id.progress_bar)
+
 
         //устанавливаем начальное время упражнения
         mTotalTime.text = getTimeString(TIME_EXERCISE)
@@ -113,24 +131,58 @@ class BreathActivity : AppCompatActivity() {
         //устанавливаем максимальное значение
         seekBar!!.max = TIME_EXERCISE.toInt()
 
+        // получаем ширину бегунка
+        val widthSlider = getSliderWidth()
+        // получаем ширину прогрессбара
+        val widthProgressBar = getProgressWidth()
+
+        // устанавливаем ширину прогрессбара
+        val params: ViewGroup.LayoutParams = progressBar.layoutParams
+        params.width = widthProgressBar
+        progressBar.layoutParams = params
+
         // Добавляем анимацию вращения
-        animationSlider = CircularRotateAnimation(mSlider, 400F)
+        animationSlider = CircularRotateAnimation(mSlider, widthSlider)
         animationSlider?.duration = TIME_BREATH
         animationSlider?.repeatCount = TIME_EXERCISE.toInt() / 1000
 
         mBtnStart.setOnClickListener {
-            start()
+            startDialog()
         }
-
-//        screenDialog("Это диалог", "здесь будет текст сообщения")
-
     }
+
+    // получаем ширину экрана
+    private fun getScreenWidth(activity: Activity): Int {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val windowMetrics = activity.windowManager.currentWindowMetrics
+            val insets: Insets = windowMetrics.windowInsets
+                .getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
+            windowMetrics.bounds.width() - insets.left - insets.right
+        } else {
+            val displayMetrics = DisplayMetrics()
+            activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
+            displayMetrics.widthPixels
+        }
+    }
+    // рассчитываем ширину бегунка
+    private fun getSliderWidth(): Float {
+        val width = getScreenWidth(this)
+        val t = (width.toFloat() / 2)
+        val y = (t / 100) * 20
+        return t - y
+    }
+    // рассчитываем ширину прогрессбара
+    private fun getProgressWidth(): Int {
+        val width = getScreenWidth(this)
+        val a = (width / 100) *  17
+        return width - a
+    }
+
     // получаем название
     private fun getTitleBreath(index: Int): String? {
         val listTitle = resources.getStringArray(R.array.list_breath_exercise_array)
         return listTitle[index]
     }
-
 
     // обновление ПрогрессБар
     private val mHandler = Handler()
@@ -147,7 +199,7 @@ class BreathActivity : AppCompatActivity() {
         }
     }
 
-    private fun start() {
+    fun start() {
         startExerciseTimer()
         mSlider.startAnimation(animationSlider)
         mSlider.visibility = View.VISIBLE
@@ -155,7 +207,7 @@ class BreathActivity : AppCompatActivity() {
         mBtnStart.isActivated = true
         mRunnable.run()
     }
-
+    // изменяем надпись в центре экрана в зависимости от фазы цикла
     private fun treatmentBreath(interval: Int, counter: Int) {
         when (interval) {
             0 -> {
@@ -186,7 +238,7 @@ class BreathActivity : AppCompatActivity() {
 
 
     }
-
+    // проверяем фазы цикла
     private fun intervalBreath(c0: Int): Int {
         var counter = 0
         if (c0 < TIME_INHALE / 1000) counter = 1
@@ -195,7 +247,7 @@ class BreathActivity : AppCompatActivity() {
         if (c0 >= TIME_INHALE / 1000 + TIME_DELAY_1 / 1000 + TIME_EXHALATION / 1000)  counter = 4
         return counter
     }
-
+    // отсчет таймера
     private fun startExerciseTimer() {
         var counterInterval = 0
         countDownTimer = object : CountDownTimer(TIME_EXERCISE, 1000) {
@@ -209,7 +261,7 @@ class BreathActivity : AppCompatActivity() {
 
                 counterInterval += 1
                 val mil = millis / 1000
-                log("seconds: $mil")
+//                log("seconds: $mil")
                 TIME_PASSED += 1000
 
                 if (counterInterval == (TIME_BREATH / 1000).toInt()) {
@@ -228,7 +280,7 @@ class BreathActivity : AppCompatActivity() {
         inhale = true
         exhalation = true
     }
-
+    // изменения сикбара
     private fun seekBarAndTimeExerciseUpdate() {
         // обновляем время оставшееся
         val duration = TIME_EXERCISE - TIME_PASSED
@@ -268,7 +320,17 @@ class BreathActivity : AppCompatActivity() {
         }
     }
 
-    // отображение времени
+    private fun startDialog() {
+        try {
+            val dialog = StartBreathDialog()
+            val manager = supportFragmentManager
+            dialog.show(manager, "StartDialog")
+        } catch (e: IllegalStateException) {
+            e.printStackTrace()
+        }
+    }
+
+    // правильное отображение времени
     private fun getTimeString(millis: Long): String {
         val buf = StringBuffer()
         val hours = millis / (1000 * 60 * 60)
@@ -298,11 +360,11 @@ class BreathActivity : AppCompatActivity() {
     }
 
     companion object Breath {
-        val TIMES_INHALE = arrayListOf<Long>(5000, 3000, 4000, 6000, 6000, 6000, 6000, 0)
-        val TIMES_DELAY_1 = arrayListOf<Long>(2000, 3000, 5000, 6000, 6000, 6000, 6000, 0)
-        val TIMES_EXHALATION = arrayListOf<Long>(4000, 2000, 3000, 6000, 6000, 6000, 6000, 0)
-        val TIMES_DELAY_2 = arrayListOf<Long>(3000, 4000, 5000, 6000, 6000, 6000, 6000, 0)
-        val TIMES_QUANTITY = arrayListOf( 1, 2, 3, 10, 10, 10, 10, 0)
+        val TIMES_INHALE = arrayListOf<Long>(5000, 3000, 4000, 6000, 6000, 6000, 6000)
+        val TIMES_DELAY_1 = arrayListOf<Long>(2000, 3000, 5000, 6000, 6000, 6000, 6000)
+        val TIMES_EXHALATION = arrayListOf<Long>(4000, 2000, 3000, 6000, 6000, 6000, 6000)
+        val TIMES_DELAY_2 = arrayListOf<Long>(3000, 4000, 5000, 6000, 6000, 6000, 6000)
+        val TIMES_QUANTITY = arrayListOf( 1, 2, 3, 10, 10, 10, 10)
     }
 
 }

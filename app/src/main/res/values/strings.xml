@@ -11,13 +11,6 @@
     <string name="breaths_text">ДЫХАНИЕ</string>
     <string name="meditations_text">МЕДИТАЦИИ</string>
 
-    // Главный список категорий (ОПИСАНИЯ)
-    <string-array name="main_list_discription_array">
-        <item>10 упражнений, которые помогу улучшить зрение и снять усталость глаз</item>
-        <item>Гимнастики дыхания улучшающие кровобращение, поднимающие тонус</item>
-        <item>Помогают снять стресс, улучшить сон и восстановить хуй знает что ещё</item>
-    </string-array>
-
     // СИСТЕМНЫЕ, ПРЕДУПРЕЖДЕНИЯ, ОШИБКИ
     <string name="title_activity_eyes">EyesActivity</string>
     <string name="title_activity_breath">BreathActivity</string>
@@ -31,23 +24,24 @@
     <string name="_00_00_00">00:00:00</string>
     <string name="text_chtotoposhlonetak">Что-то пошло не так</string>
 
-
-    // ЗРЕНИЕ
-    <string-array name="list_eyes_exercise_array">
-        <item>Разминка</item>
-        <item>Упражнение на фокусировку</item>
-        <item>Упражнение перед сном</item>
-        <item>Упражнение перед сном</item>
-        <item>Упражнение перед сном</item>
-        <item>Упражнение перед сном</item>
+    // ФОКУСЫ СОСТОЯНИЙ
+    <string-array name="list_focus_exercise_array">
+        <item>ОГОНЬ</item>
+        <item>ВОДА</item>
+        <item>ЗЕМЛЯ</item>
+        <item>ВОЗДУХ</item>
     </string-array>
-    <string-array name="list_eyes_description_array">
-        <item>Используйте в начале дня</item>
-        <item>После долгой работы за компьютером</item>
-        <item>Расслабляет глаза перед сном</item>
-        <item>Упражнение перед сном</item>
-        <item>Упражнение перед сном</item>
-        <item>Упражнение перед сном</item>
+    <string-array name="list_focus_description_array">
+        <item>Имидж Искусство Благотворительность</item>
+        <item>Семья Секс Духовность</item>
+        <item>Финансы Работа Здоровье</item>
+        <item>Знания Любовь Дружба</item>
+    </string-array>
+    <string-array name="list_focus_description_full_array">
+        <item>Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание</item>
+        <item>Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание</item>
+        <item>Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание</item>
+        <item>Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание</item>
     </string-array>
 
     // ДЫХАНИЕ
@@ -59,17 +53,15 @@
         <item>Дыхание отключающее на 20 мин</item>
         <item>Дыхание отключающее на 30 мин</item>
         <item>Дыхание отключающее на 40 мин</item>
-        <item>0</item>
     </string-array>
     <string-array name="list_breath_description_array">
-        <item>Повышает давление</item>
-        <item>Возвращает хорошее настроение</item>
-        <item>Настраивает на позитивный день</item>
-        <item>Дыхание</item>
-        <item>Просто улет))</item>
-        <item>Дыхание отключающее на 0 мин</item>
-        <item>Дыхание отключающее на 0 мин</item>
-        <item>0</item>
+        <item>Дыхание \"Огня\"</item>
+        <item>Дыхание поднимающее тонус</item>
+        <item>Дыхание помогающее проснуться</item>
+        <item>Дыхание отключающее на 10 мин</item>
+        <item>Дыхание отключающее на 20 мин</item>
+        <item>Дыхание отключающее на 30 мин</item>
+        <item>Дыхание отключающее на 40 мин</item>
     </string-array>
 
     <string name="text_inhale">ВДОХ</string>
@@ -87,13 +79,22 @@
         <item>Медитация \"Полет\"</item>
     </string-array>
     <string-array name="list_meditation_description_array">
-        <item>Помогает увеличить доходы</item>
-        <item>Настраивает на позитивный день</item>
-        <item>Избавляет от депрессии, улучшает настроение</item>
-        <item>Медитация от депрессии</item>
-        <item>Медитация от депрессии</item>
-        <item>Медитация от депрессии</item>
-        <item>Медитация \"Полет\"</item>
+        <item>Короткое описание</item>
+        <item>Короткое описание</item>
+        <item>Короткое описание</item>
+        <item>Короткое описание</item>
+        <item>Короткое описание</item>
+        <item>Короткое описание</item>
+        <item>Короткое описание</item>
+    </string-array>
+    <string-array name="list_meditation_description_full_array">
+        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
+        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
+        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
+        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
+        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
+        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
+        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
     </string-array>
 
     <string-array name="list_meditation_audio_array">
@@ -106,8 +107,5 @@
         <item>https://pankratov.store/liveAndHealth/img/01_meditation_maze_img.jpg</item>
         <item>https://pankratov.store/liveAndHealth/img/01_meditation_maze_img.jpg</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 </resources>

@@ -19,6 +19,7 @@
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/gradient1.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/gradient2.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/gradient_black_transp.xml" value="0.33489583333333334" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/gradient_black_transp_land.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/gradient_for_list_exersice.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/gradient_for_list_exersice_breath.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/gradient_for_list_exersice_focus.xml" value="0.33489583333333334" />
@@ -36,6 +37,9 @@
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/slider_big.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/slider_small.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/drawable/trajectory.xml" value="0.33489583333333334" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout-land/activity_breath.xml" value="0.26444833625218916" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout-land/activity_condition.xml" value="0.26444833625218916" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout-land/activity_meditation.xml" value="0.26444833625218916" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/activity_breath.xml" value="0.33" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/activity_condition.xml" value="0.2957427536231884" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/activity_eyes.xml" value="0.29438405797101447" />
@@ -63,6 +67,8 @@
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/list_workout_layout.xml" value="0.26222826086956524" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/screen_dialog_exemple.xml" value="0.223731884057971" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/screen_dialog_layout.xml" value="0.24909420289855072" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/start_breath_dialog_layout.xml" value="0.2391304347826087" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/app/src/main/res/layout/activity_main.xml" value="0.19701086956521738" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/app/src/main/res/layout/list_main_workout_layout.xml" value="0.19701086956521738" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/app/src/main/res/layout/listviewmain_layout.xml" value="0.33" />

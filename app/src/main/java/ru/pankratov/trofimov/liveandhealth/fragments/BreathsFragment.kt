@@ -19,7 +19,7 @@ class BreathsFragment : Fragment() {
     private lateinit var mTextHead: TextView
     private lateinit var mListBreathsView: RecyclerView
 
-    private var breathslist = arrayListOf<BreathExerModelList>()
+    private var breatheslist = arrayListOf<BreathExerModelList>()
     var mAdapterBreaths: BreathExersiceAdapter? = null
 
     override fun onCreateView(
@@ -31,30 +31,37 @@ class BreathsFragment : Fragment() {
 
         mTextHead = inflatedView.findViewById(R.id.textView_head_breath)
         mListBreathsView = inflatedView.findViewById(R.id.listView_breaths)
+        // заполняем список
+        addListData()
 
-        for (i in 10..28) {
-            val value = BreathExerModelList()
-            value.image = R.mipmap.ic_btn_pause
-            value.title = "title $i"
-            value.discription = "discription"
-            breathslist.add(value)
-        }
-        MainActivity.log("list: $breathslist")
-
-        mTextHead.text = "Дыхание"
+        mTextHead.text = getString(R.string.breaths_text)
         // + фирменный шрифт
         val fontAppZagolovok = Typeface.createFromAsset(resources.assets, "Comfortaa-Bold.ttf")
         mTextHead.typeface = fontAppZagolovok
 
         // адаптер
         val ctx = context
-        mAdapterBreaths = ctx?.let { BreathExersiceAdapter(breathslist, it) }
+        mAdapterBreaths = ctx?.let { BreathExersiceAdapter(breatheslist, it) }
         mListBreathsView.layoutManager = LinearLayoutManager(context)
         mListBreathsView.isNestedScrollingEnabled = false
         mListBreathsView.setHasFixedSize(true)
         mListBreathsView.adapter = mAdapterBreaths
 
         return inflatedView
+    }
+
+    private fun addListData() {
+        val nameslist = resources.getStringArray(R.array.list_breath_exercise_array)
+        val discriptionlist = resources.getStringArray(R.array.list_breath_description_array)
+
+        for (i in nameslist.indices) {
+            val value = BreathExerModelList()
+            value.image = R.mipmap.ic_01
+            value.title = nameslist[i]
+            value.discription = discriptionlist[i]
+            breatheslist.add(value)
+        }
+//        MainActivity.log("list: $breatheslist")
     }
 
 }
