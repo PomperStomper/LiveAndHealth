@@ -11,10 +11,6 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="colorAccent">@color/orange_500</item>
         <!-- Status bar color. -->
-<!--        <item name="android:statusBarColor" tools:targetApi="l">@color/cardview_shadow_start_color</item>-->
-        <!-- Customize your theme here. -->
-<!--        <item name="android:windowTranslucentStatus">true</item>-->
-<!--        <item name="android:windowTranslucentNavigation">true</item>-->
         <item name="actionBarTheme">@style/ActionBar</item>
     </style>
 
@@ -46,6 +42,17 @@
         <item name="android:minWidth">100dp</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:background">@drawable/gradient_for_list_exersice_off</item>
+    </style>
+    <style name="TextExersiseName" parent="Theme.LiveAndHealth">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="TextExersiseDiscription" parent="Theme.LiveAndHealth">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/grey_light</item>
     </style>
 
 </resources>

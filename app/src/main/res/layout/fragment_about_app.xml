@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".fragments.SettingsFragment">
+    tools:context=".fragments.AboutAppFragment">
 
     <View
         android:id="@+id/view2"
@@ -37,10 +37,31 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:background="@drawable/gradient_black_transp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/button_back_about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/btn_back"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:background="@drawable/gradient_black_transp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,13 +70,13 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/text_name_settings"
+                    android:id="@+id/text_name_about"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/black"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="15dp"
-                    android:text="@string/settings_text"
+                    android:text="@string/about_text"
                     android:textColor="@color/white"
                     android:textSize="25sp" />
 
@@ -67,28 +88,10 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/text_share_settings"
+                        android:id="@+id/text_disc_about"
                         style="@style/TextExersiseName"
                         android:layout_marginTop="15dp"
-                        android:text="@string/review_text" />
-
-                    <TextView
-                        android:id="@+id/text_review_settings"
-                        style="@style/TextExersiseName"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/share_text" />
-
-                    <TextView
-                        android:id="@+id/text_send_settings"
-                        style="@style/TextExersiseName"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/send_mail_text" />
-
-                    <TextView
-                        android:id="@+id/text_about_settings"
-                        style="@style/TextExersiseName"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/about_text" />
+                        android:text="@string/about_discription_text" />
 
                 </LinearLayout>
 

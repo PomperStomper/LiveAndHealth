@@ -14,10 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import ru.pankratov.trofimov.liveandhealth.fragments.ConditionsFragment
-import ru.pankratov.trofimov.liveandhealth.fragments.SettingsFragment
-import ru.pankratov.trofimov.liveandhealth.fragments.BreathsFragment
-import ru.pankratov.trofimov.liveandhealth.fragments.MeditationsFragment
+import ru.pankratov.trofimov.liveandhealth.fragments.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mBreath: AppCompatButton
     private lateinit var mMeditation: AppCompatButton
     private lateinit var mSettings: AppCompatButton
+
+    var fragment: Fragment = ConditionsFragment()
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,11 +70,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startFirstFragment() {
-        val fragment: Fragment = ConditionsFragment()
-        val fm = supportFragmentManager
-        val ft = fm.beginTransaction()
-        ft.replace(R.id.fragment_main, fragment)
-        ft.commit()
+
+        fragmentAdd()
+
         val white = ContextCompat.getColor(applicationContext, R.color.white)
 
         mFocus.setTextColor(white)
@@ -84,7 +81,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeFragment(id: Int) {
-        var fragment: Fragment = ConditionsFragment()
         when(id) {
             1 -> {
                 fragment = ConditionsFragment()
@@ -103,11 +99,19 @@ class MainActivity : AppCompatActivity() {
                 changeColor(4)
             }
         }
+        fragmentAdd()
+    }
+
+    private fun returnFragmentSettings() {
+        fragment = SettingsFragment()
+        fragmentAdd()
+    }
+
+    private fun fragmentAdd() {
         val fm = supportFragmentManager
         val ft = fm.beginTransaction()
         ft.replace(R.id.fragment_main, fragment)
         ft.commit()
-
     }
 
     @SuppressLint("ResourceAsColor")
@@ -175,8 +179,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        if (fragmentAboutFlag) {
+            returnFragmentSettings()
+            fragmentAboutFlag = false
+        } else super.onBackPressed()
+    }
+
+
     companion object MainObject {
+        var fragmentAboutFlag = false
+
         const val TAG = "livetag"
+        const val AUDIOFILE_BACKGROUND_TAG = "audioBreathTag"
         const val MAIN_TAG = "main_tag"
         const val FOCUS_TAG = "focus_tag"
         const val BREATH_TAG = "breath_tag"

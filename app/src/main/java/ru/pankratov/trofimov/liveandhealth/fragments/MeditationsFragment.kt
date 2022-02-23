@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.adapters.MeditationExersiceAdapter
 import ru.pankratov.trofimov.liveandhealth.models.BreathExerModelList
@@ -36,13 +39,8 @@ class MeditationsFragment : Fragment() {
         val fontAppZagolovok = Typeface.createFromAsset(resources.assets, "Comfortaa-Bold.ttf")
         mTextHead.typeface = fontAppZagolovok
 
-        for (i in 30..58) {
-            val value = MeditExerModelList()
-            value.image = R.mipmap.ic_btn_pause
-            value.title = "title $i"
-            value.discription = "discription"
-            meditationslist.add(value)
-        }
+        // заполняем список медитаций
+        getListMeditation()
 
         // адаптер
         val ctx = context
@@ -54,5 +52,18 @@ class MeditationsFragment : Fragment() {
 
 
         return inflatedView
+    }
+
+    private fun getListMeditation() {
+        val listName = resources.getStringArray(R.array.list_meditation_exercise_array)
+        val listDiscr = resources.getStringArray(R.array.list_meditation_description_array)
+
+        for (i in listName.indices) {
+            val value = MeditExerModelList()
+            value.image = R.mipmap.ic_01
+            value.title = listName[i]
+            value.discription = listDiscr[i]
+            meditationslist.add(value)
+        }
     }
 }

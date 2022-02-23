@@ -51,6 +51,7 @@
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/content_meditation.xml" value="0.29438405797101447" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/exemple_list_categories.xml" value="0.5" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/exemple_list_exersice.xml" value="0.31431159420289856" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/fragment_about_app.xml" value="0.33" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/fragment_breaths.xml" value="0.31431159420289856" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/fragment_conditions.xml" value="0.30978260869565216" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/fragment_first.xml" value="0.29438405797101447" />
@@ -68,6 +69,7 @@
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/screen_dialog_exemple.xml" value="0.223731884057971" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/screen_dialog_layout.xml" value="0.24909420289855072" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/start_breath_dialog_layout.xml" value="0.2391304347826087" />
+        <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/layout/start_meditation_dialog_layout.xml" value="0.2644927536231884" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/LiveAndHealth/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.33489583333333334" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/app/src/main/res/layout/activity_main.xml" value="0.19701086956521738" />
         <entry key="..\:/ANDROID/AndroidStudioProjects/app/src/main/res/layout/list_main_workout_layout.xml" value="0.19701086956521738" />

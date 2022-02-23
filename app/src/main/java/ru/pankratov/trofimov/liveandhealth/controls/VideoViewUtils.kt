@@ -1,25 +1,11 @@
-package ru.pankratov.trofimov.liveandhealth
+package ru.pankratov.trofimov.liveandhealth.controls
 
 import android.content.Context
 import android.net.Uri
-import androidx.core.content.PackageManagerCompat
-import androidx.core.content.PackageManagerCompat.LOG_TAG
 import android.widget.Toast
-
-import androidx.core.content.PackageManagerCompat.LOG_TAG
 
 import android.widget.VideoView
 import java.lang.Exception
-import androidx.core.content.PackageManagerCompat.LOG_TAG
-import androidx.core.content.PackageManagerCompat.LOG_TAG
-import android.R
-
-import android.media.MediaPlayer
-
-import android.media.MediaPlayer.OnPreparedListener
-
-
-
 
 
 open class VideoViewUtils {

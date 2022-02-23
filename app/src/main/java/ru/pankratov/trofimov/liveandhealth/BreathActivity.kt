@@ -23,9 +23,12 @@ import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.BREATH_TAG
 import android.util.DisplayMetrics
 import android.view.WindowInsets
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Insets
 import android.view.ViewGroup
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.AUDIOFILE_BACKGROUND_TAG
 import ru.pankratov.trofimov.liveandhealth.dialogs.StartBreathDialog
+import ru.pankratov.trofimov.liveandhealth.services.AudioService
 
 class BreathActivity : AppCompatActivity() {
 
@@ -79,6 +82,7 @@ class BreathActivity : AppCompatActivity() {
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             statusBarColor = Color.TRANSPARENT
         }
+
 
         //получаем интент (номер упражнения)
         val intent = intent
@@ -149,6 +153,8 @@ class BreathActivity : AppCompatActivity() {
         mBtnStart.setOnClickListener {
             startDialog()
         }
+
+        startAudio()
     }
 
     // получаем ширину экрана
@@ -356,8 +362,20 @@ class BreathActivity : AppCompatActivity() {
         super.onBackPressed()
         countDownTimer?.cancel()
         stopAll()
+        stopAudio()
         finish()
     }
+
+    private fun startAudio() {
+        val intent = Intent(this, AudioService::class.java)
+        intent.putExtra(AUDIOFILE_BACKGROUND_TAG, R.raw.backgroundbreath)
+        startService(intent)
+    }
+
+    private fun stopAudio() {
+        stopService(Intent(this, AudioService::class.java))
+    }
+
 
     companion object Breath {
         val TIMES_INHALE = arrayListOf<Long>(5000, 3000, 4000, 6000, 6000, 6000, 6000)

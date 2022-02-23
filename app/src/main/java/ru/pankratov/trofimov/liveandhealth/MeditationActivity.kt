@@ -2,6 +2,7 @@ package ru.pankratov.trofimov.liveandhealth
 
 import android.app.Activity
 import android.app.ProgressDialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.media.MediaPlayer
@@ -17,6 +18,9 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import com.squareup.picasso.Picasso
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.MEDITATION_TAG
+import ru.pankratov.trofimov.liveandhealth.dialogs.StartBreathDialog
+import ru.pankratov.trofimov.liveandhealth.dialogs.StartMeditationDialog
+import ru.pankratov.trofimov.liveandhealth.services.AudioService
 import java.io.IOException
 
 class MeditationActivity : AppCompatActivity() {
@@ -92,7 +96,7 @@ class MeditationActivity : AppCompatActivity() {
             mTextDiscriptionFullBreath.typeface = fontApp
 
             mBtnPlayPause = findViewById(R.id.play_pause)
-            mBtnPlayPause.setOnClickListener() {
+            mBtnPlayPause.setOnClickListener {
                 playPauseBtn()
             }
 
@@ -104,8 +108,11 @@ class MeditationActivity : AppCompatActivity() {
             Picasso.with(applicationContext).load(pathImg).into(mImageView)
 
             // execute this code at the end of asynchronous media player preparation
-            mediaPlayer!!.setOnPreparedListener { mp -> //start media player
-                mp.start()
+            mediaPlayer!!.setOnPreparedListener { mp ->
+
+                mediaPlayer!!.setVolume(VOLUME, VOLUME)
+                // начинаем подготовительный диалог
+                startDialog()
                 // link seekbar to bar view
                 seekBar = findViewById<View>(R.id.seekBar_meditation) as SeekBar
                 //update seekbar
@@ -253,6 +260,30 @@ class MeditationActivity : AppCompatActivity() {
             .append(":")
             .append(String.format("%02d", seconds))
         return buf.toString()
+    }
+
+    private fun startDialog() {
+        try {
+            val dialog = StartMeditationDialog()
+            val manager = supportFragmentManager
+            dialog.show(manager, "StartDialog")
+        } catch (e: IllegalStateException) {
+            e.printStackTrace()
+        }
+    }
+
+    fun startAudio() {
+        val intent = Intent(this, AudioService::class.java)
+        intent.putExtra(MainActivity.AUDIOFILE_BACKGROUND_TAG, R.raw.intromeditation)
+        startService(intent)
+    }
+
+    fun stopAudio() {
+        stopService(Intent(this, AudioService::class.java))
+    }
+
+    companion object {
+        const val VOLUME = 0.5f
     }
 
 }

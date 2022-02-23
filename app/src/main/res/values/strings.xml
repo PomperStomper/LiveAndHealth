@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">LiveAndHealth</string>
+    <string name="link_app">http://play.google.com/store/apps/details?id=ru.pankratov.jewelercalculator</string>
     // MAIN
     <string name="main_focus_text">состояния</string>
     <string name="main_breath_text">дыхание</string>
@@ -10,6 +11,33 @@
     <string name="conditions_text">ФОКУСЫ СОСТОЯНИЙ</string>
     <string name="breaths_text">ДЫХАНИЕ</string>
     <string name="meditations_text">МЕДИТАЦИИ</string>
+
+    // Служебные
+    <string name="settings_text">Настройки</string>
+    <string name="review_text">Поделиться</string>
+    <string name="share_text">Оставить отзыв</string>
+    <string name="send_mail_text">Сообщить о проблеме</string>
+    <string name="about_text">О приложении</string>
+    <string name="about_discription_text">
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения
+    </string>
+    <string name="start_dialog_meditation_head_text">ПОДГОТОВЬТЕСЬ</string>
+    <string name="start_dialog_meditation_discription_text">
+        Подключите гарнитуру\n\n
+        Сядьте или лягте удобно\n\n
+        Расслабьтесь</string>
 
     // СИСТЕМНЫЕ, ПРЕДУПРЕЖДЕНИЯ, ОШИБКИ
     <string name="title_activity_eyes">EyesActivity</string>
@@ -70,19 +98,11 @@
 
     // МЕДИТАЦИИ
     <string-array name="list_meditation_exercise_array">
-        <item>Медитация \"Лабиринт\"</item>
-        <item>Медитация \"Полет\"</item>
-        <item>Медитация от депрессии</item>
-        <item>Медитация от депрессии</item>
-        <item>Медитация от депрессии</item>
-        <item>Медитация от депрессии</item>
-        <item>Медитация \"Полет\"</item>
+        <item>Лабиринт</item>
+        <item>Огненая сила</item>
+        <item>Бездна тишины</item>
     </string-array>
     <string-array name="list_meditation_description_array">
-        <item>Короткое описание</item>
-        <item>Короткое описание</item>
-        <item>Короткое описание</item>
-        <item>Короткое описание</item>
         <item>Короткое описание</item>
         <item>Короткое описание</item>
         <item>Короткое описание</item>
@@ -91,21 +111,17 @@
         <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
         <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
         <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
-        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
-        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
-        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
-        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
     </string-array>
 
     <string-array name="list_meditation_audio_array">
-        <item>https://pankratov.store/depressionimmunity/meditation_maze_01.mp3</item>
-        <item>https://pankratov.store/depressionimmunity/meditation_maze_01.mp3</item>
-        <item>https://pankratov.store/depressionimmunity/meditation_maze_01.mp3</item>
+        <item>https://pankratov.store/liveAndHealth/mp3/01_meditation_maze.mp3</item>
+        <item>https://pankratov.store/liveAndHealth/mp3/02_meditation_fiery_force.mp3</item>
+        <item>https://pankratov.store/liveAndHealth/mp3/03_meditation_abyss_of_silence.mp3</item>
     </string-array>
     <string-array name="list_meditation_image_array">
         <item>https://pankratov.store/liveAndHealth/img/01_meditation_maze_img.jpg</item>
-        <item>https://pankratov.store/liveAndHealth/img/01_meditation_maze_img.jpg</item>
-        <item>https://pankratov.store/liveAndHealth/img/01_meditation_maze_img.jpg</item>
+        <item>https://pankratov.store/liveAndHealth/img/02_meditation_fiery_force_img.jpg</item>
+        <item>https://pankratov.store/liveAndHealth/img/03_meditation_abyss_of_silence_img.jpg</item>
     </string-array>
 
 </resources>
