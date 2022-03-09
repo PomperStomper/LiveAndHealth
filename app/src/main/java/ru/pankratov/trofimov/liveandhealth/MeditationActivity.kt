@@ -51,7 +51,7 @@ class MeditationActivity : AppCompatActivity() {
 
         // медитации - заполняем списки ссылок на название, аудио и картинки
         val listName = resources.getStringArray(R.array.list_meditation_exercise_array)
-        val listDiscr = resources.getStringArray(R.array.list_meditation_description_full_array)
+        val listDiscr = resources.getStringArray(R.array.list_meditation_description_array)
         val listAudioMeditationArray = resources.getStringArray(R.array.list_meditation_audio_array)
         val listImageMeditationArray = resources.getStringArray(R.array.list_meditation_image_array)
         // получаем нужное из списков
@@ -247,6 +247,11 @@ class MeditationActivity : AppCompatActivity() {
         finish()
     }
 
+    override fun onResume() {
+        super.onResume()
+        mediaPlayer!!.start()
+    }
+
     // отображение времени
     private fun getTimeString(millis: Long): String {
         val buf = StringBuffer()
@@ -283,7 +288,7 @@ class MeditationActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val VOLUME = 0.5f
+        const val VOLUME = 0.9f
     }
 
 }

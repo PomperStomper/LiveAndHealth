@@ -1,6 +1,7 @@
 package ru.pankratov.trofimov.liveandhealth
 
 import android.app.Activity
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Insets
@@ -9,18 +10,22 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.FOCUS_TAG
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.log
 import ru.pankratov.trofimov.liveandhealth.fragments.ConditionsFragment.ConditionObjects.DRAWABLES_ICONS_FOCUS
 import ru.pankratov.trofimov.liveandhealth.fragments.ConditionsFragment.ConditionObjects.DRAWABLES_IMG_FOCUS
 import android.widget.*
 import android.widget.MediaController
 import android.widget.VideoView
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.AUDIOFILE_BACKGROUND_TAG
 import ru.pankratov.trofimov.liveandhealth.controls.VideoViewCustom
 import ru.pankratov.trofimov.liveandhealth.controls.VideoViewUtils
+import ru.pankratov.trofimov.liveandhealth.services.AudioService
 
 class ConditionActivity : AppCompatActivity() {
 
@@ -33,12 +38,16 @@ class ConditionActivity : AppCompatActivity() {
 
     private val position = 0
     private var mediaController: MediaController? = null
+    private val video = VideoViewUtils()
+    private var audioService: AudioService? = null
 
     var videoCustomClass: VideoViewCustom? = null
 
-    var displayWidth = getScreenWidth(this)
-    var displayHeight = getScreenHeigth(this)
+    var displayWidth = 1920//getScreenWidth(this)
+    var displayHeight = 1080//getScreenHeigth(this)
     val smallHeight = 300
+
+    var ID = 0
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +65,7 @@ class ConditionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_condition)
 
         videoCustomClass = VideoViewCustom(this)
+        audioService = AudioService()
 
         displayWidth = getScreenWidth(this)
         displayHeight = getScreenHeigth(this)
@@ -68,15 +78,15 @@ class ConditionActivity : AppCompatActivity() {
         mBtnStartVideo = findViewById(R.id.button_start)
 
         val intent = intent
-        val id = intent.getIntExtra(FOCUS_TAG, 0)
+        ID = intent.getIntExtra(FOCUS_TAG, 0)
 
         val listNames = resources.getStringArray(R.array.list_focus_exercise_array)
         val listDiscriptions = resources.getStringArray(R.array.list_focus_description_full_array)
 
-        mTextName.text = listNames[id]
-        mTextDiscription.text = listDiscriptions[id]
-        mImageHead.setImageResource(DRAWABLES_IMG_FOCUS[id])
-        mImageCategory.setImageResource(DRAWABLES_ICONS_FOCUS[id])
+        mTextName.text = listNames[ID]
+        mTextDiscription.text = listDiscriptions[ID]
+        mImageHead.setImageResource(DRAWABLES_IMG_FOCUS[ID])
+        mImageCategory.setImageResource(DRAWABLES_ICONS_FOCUS[ID])
         // + фирменный шрифт
         val fontApp = Typeface.createFromAsset(assets, "Comfortaa-Bold.ttf")
         mTextName.typeface = fontApp
@@ -95,18 +105,20 @@ class ConditionActivity : AppCompatActivity() {
             if (position == 0) {
                 mVideoView.start()
             }
-
             // Смена размера экрана.
             mediaPlayer.setOnVideoSizeChangedListener { mp, width, height ->
                 mediaController!!.setAnchorView(mVideoView)
             }
         }
+
         mBtnStartVideo.setOnClickListener {
-            val resName: String = VideoViewUtils.RAW_VIDEO_SAMPLE
-            val video = VideoViewUtils()
-            video.playRawVideo(this, mVideoView, resName)
+//            val video = VideoViewUtils()
+            video.playRawVideo(this, mVideoView, VIDEO[ID])
         }
 
+        mVideoView.setOnCompletionListener {
+            video.playRawVideo(this, mVideoView, VIDEO[ID])
+        }
 
     }
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
@@ -119,7 +131,6 @@ class ConditionActivity : AppCompatActivity() {
     // После поворота телефона. Этот метод называется
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-
         // Получить сохраненную позицию
         val position = savedInstanceState.getInt("CurrentPosition")
         mVideoView.seekTo(position)
@@ -181,4 +192,21 @@ class ConditionActivity : AppCompatActivity() {
             displayMetrics.heightPixels
         }
     }
+
+
+    companion object {
+        val AUDIO = arrayOf(
+            R.raw.fireaudio,
+            R.raw.wateraudio,
+            R.raw.wateraudio,
+            R.raw.wateraudio
+        )
+        val VIDEO = arrayOf(
+            "firevideo",
+            "watervideo",
+            "earthvideo",
+            "airvideo"
+        )
+    }
+
 }

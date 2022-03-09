@@ -154,7 +154,6 @@ class BreathActivity : AppCompatActivity() {
             startDialog()
         }
 
-        startAudio()
     }
 
     // получаем ширину экрана
@@ -207,6 +206,7 @@ class BreathActivity : AppCompatActivity() {
 
     fun start() {
         startExerciseTimer()
+        startAudio()
         mSlider.startAnimation(animationSlider)
         mSlider.visibility = View.VISIBLE
         mBtnStart.isClickable = false
@@ -307,6 +307,7 @@ class BreathActivity : AppCompatActivity() {
         animationSlider?.reset()
         mRastish.clearAnimation()
 
+        stopAudio()
         seekBarAndTimeExerciseUpdate()
 
         mSlider.visibility = View.GONE
@@ -362,13 +363,22 @@ class BreathActivity : AppCompatActivity() {
         super.onBackPressed()
         countDownTimer?.cancel()
         stopAll()
-        stopAudio()
         finish()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        stopAudio()
+    }
+
+    override fun onResume() {
+        super.onResume()
+//        startAudio()
     }
 
     private fun startAudio() {
         val intent = Intent(this, AudioService::class.java)
-        intent.putExtra(AUDIOFILE_BACKGROUND_TAG, R.raw.backgroundbreath)
+        intent.putExtra(AUDIOFILE_BACKGROUND_TAG, AUDIO_BACKGROUND)
         startService(intent)
     }
 
@@ -378,11 +388,22 @@ class BreathActivity : AppCompatActivity() {
 
 
     companion object Breath {
-        val TIMES_INHALE = arrayListOf<Long>(5000, 3000, 4000, 6000, 6000, 6000, 6000)
-        val TIMES_DELAY_1 = arrayListOf<Long>(2000, 3000, 5000, 6000, 6000, 6000, 6000)
-        val TIMES_EXHALATION = arrayListOf<Long>(4000, 2000, 3000, 6000, 6000, 6000, 6000)
-        val TIMES_DELAY_2 = arrayListOf<Long>(3000, 4000, 5000, 6000, 6000, 6000, 6000)
-        val TIMES_QUANTITY = arrayListOf( 1, 2, 3, 10, 10, 10, 10)
+        const val AUDIO_BACKGROUND = R.raw.backgroundbreath
+        val TIMES_INHALE = arrayListOf<Long>(
+            3000, 3000, 3000, 3000, 9000, 5000, 4000, 600, 4000, 5000, 600, 9000, 4000, 4000, 20000
+        )
+        val TIMES_DELAY_1 = arrayListOf<Long>(
+            0, 0, 6000, 6000, 0, 0, 2000, 0, 0, 15000, 0, 0, 0, 4000, 20000
+        )
+        val TIMES_EXHALATION = arrayListOf<Long>(
+            9000, 6000, 3000, 6000, 2000, 5000, 1000, 400, 8000, 5000, 400, 6000, 8000, 4000, 20000
+        )
+        val TIMES_DELAY_2 = arrayListOf<Long>(
+            0, 6000, 6000, 0, 0, 5000, 5000, 0, 12000, 2500, 0, 0, 0, 4000, 0
+        )
+        val TIMES_QUANTITY = arrayListOf(
+            35, 28, 24, 32, 28, 40, 5, 420, 18, 18, 60, 28, 35, 27, 7
+        )
     }
 
 }

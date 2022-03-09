@@ -41,7 +41,7 @@
         <item name="android:minHeight">48dp</item>
         <item name="android:minWidth">100dp</item>
         <item name="android:layout_margin">5dp</item>
-        <item name="android:background">@drawable/gradient_for_list_exersice_off</item>
+        <item name="android:background">@drawable/selector_btn</item>
     </style>
     <style name="TextExersiseName" parent="Theme.LiveAndHealth">
         <item name="android:layout_width">wrap_content</item>

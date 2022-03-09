@@ -26,6 +26,7 @@ open class VideoViewUtils {
             e.printStackTrace()
         }
     }
+
 //    fun onResume() {
 //        val video = findViewById(R.id.videoview1) as VideoView
 //        video.setOnPreparedListener { mp -> mp.isLooping = true }
@@ -66,8 +67,8 @@ open class VideoViewUtils {
         return resID
     }
 
+
     companion object {
-        val RAW_VIDEO_SAMPLE = "watervideo"
         val LOCAL_VIDEO_SAMPLE = "/storage/emulated/0/DCIM/Camera/VID_20180212_195520.mp4"
         val URL_VIDEO_SAMPLE = "https://ex1.o7planning.com/_testdatas_/mov_bbb.mp4"
 

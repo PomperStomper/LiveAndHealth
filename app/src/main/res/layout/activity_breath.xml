@@ -137,7 +137,7 @@
         <TextView
             android:id="@+id/text_breath_number"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:textColor="@color/black"
             android:textSize="27sp"
@@ -173,7 +173,7 @@
     <Button
         android:id="@+id/button_start_breath"
         style="@style/AppButton"
-        android:text="Start"
+        android:text="@string/start_text"
         android:layout_margin="40dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"

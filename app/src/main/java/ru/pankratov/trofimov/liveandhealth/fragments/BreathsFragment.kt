@@ -56,7 +56,7 @@ class BreathsFragment : Fragment() {
 
         for (i in nameslist.indices) {
             val value = BreathExerModelList()
-            value.image = R.mipmap.ic_01
+            value.image = R.mipmap.ic_btn_pause
             value.title = nameslist[i]
             value.discription = discriptionlist[i]
             breatheslist.add(value)

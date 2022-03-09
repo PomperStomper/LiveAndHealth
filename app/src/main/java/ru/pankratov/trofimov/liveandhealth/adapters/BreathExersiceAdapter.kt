@@ -15,7 +15,9 @@ import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.BREATH_TAG
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.models.BreathExerModelList
 
-class BreathExersiceAdapter(private var conditionslist: List<BreathExerModelList>, private val ctx: Context) : RecyclerView
+class BreathExersiceAdapter(
+    private var conditionslist: List<BreathExerModelList>,
+    private val ctx: Context) : RecyclerView
 .Adapter<BreathExersiceAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View, ctx: Context) : RecyclerView.ViewHolder(itemView) {
@@ -25,19 +27,36 @@ class BreathExersiceAdapter(private var conditionslist: List<BreathExerModelList
         fun bindExersice(list: BreathExerModelList) {
             list.image?.let { imageView.setImageResource(it) }
             titleView.text = list.title
-            DiscView.text = list.discription
+            discView.text = list.discription
             linear.setBackgroundResource(R.drawable.gradient_for_list_exersice_breath)
 
             // + фирменный шрифт
             val fontAppZagolovok = Typeface.createFromAsset(context.assets, "Comfortaa-Bold.ttf")
             titleView.typeface = fontAppZagolovok
-            DiscView.typeface = fontAppZagolovok
+            discView.typeface = fontAppZagolovok
+
+            discView.visibility = View.GONE
+
+            btnFullDiscView.setOnClickListener {
+                when (full) {
+                    true -> {
+                        discView.visibility = View.GONE
+                        full = false
+                        btnFullDiscView.setImageResource(R.drawable.btn_down)
+                    }
+                    false -> {
+                        discView.visibility = View.VISIBLE
+                        full = true
+                        btnFullDiscView.setImageResource(R.drawable.btn_up)
+                    }
+                }
+            }
         }
 
         val imageView: ImageView = itemView.findViewById(R.id.imageView_exersice_view)
         val titleView: TextView = itemView.findViewById(R.id.title_exersice_view)
-        val DiscView: TextView = itemView.findViewById(R.id.desc_exersice_view)
-
+        val discView: TextView = itemView.findViewById(R.id.desc_exersice_view)
+        val btnFullDiscView: ImageView = itemView.findViewById(R.id.recycler_list_full_btn)
         val linear: LinearLayout = itemView.findViewById(R.id.linear_exemple_exersice)
     }
 
@@ -51,7 +70,7 @@ class BreathExersiceAdapter(private var conditionslist: List<BreathExerModelList
         holder.bindExersice(conditionslist[position])
 
         holder.itemView.setOnClickListener {
-            holder.linear.setBackgroundResource(R.drawable.gradient_for_list_exersice_off)
+//            holder.linear.setBackgroundResource(R.drawable.gradient_for_list_exersice_off)
             val intent = Intent(ctx, BreathActivity::class.java)
             intent.putExtra(BREATH_TAG, position)
             ctx.startActivity(intent)
@@ -59,4 +78,8 @@ class BreathExersiceAdapter(private var conditionslist: List<BreathExerModelList
     }
 
     override fun getItemCount() = conditionslist.size
+
+    companion object {
+        var full = false
+    }
 }

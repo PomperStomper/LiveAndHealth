@@ -60,10 +60,19 @@ class MeditationsFragment : Fragment() {
 
         for (i in listName.indices) {
             val value = MeditExerModelList()
-            value.image = R.mipmap.ic_01
+            value.image = ICONS_MEDITATIONS[i]
             value.title = listName[i]
             value.discription = listDiscr[i]
             meditationslist.add(value)
         }
     }
+
+    companion object {
+        val ICONS_MEDITATIONS = arrayOf(
+            R.mipmap.ic_meditation_maze,
+            R.mipmap.ic_meditation_fiery_force,
+            R.mipmap.ic_meditation_abyss_of_silence
+        )
+    }
+
 }
