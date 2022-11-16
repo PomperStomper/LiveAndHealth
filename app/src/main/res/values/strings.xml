@@ -19,17 +19,20 @@
     <string name="share_text">Оставить отзыв</string>
     <string name="send_mail_text">Сообщить о проблеме</string>
     <string name="about_text">О приложении</string>
+    <string name="premium_text">PREMIUM</string>
     <string name="about_discription_text">
         Здесь будет длинный текст описания приложения
         Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения\n\n
+        Фокусы состояний\n
         Здесь будет длинный текст описания приложения
         Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения\n\n
+        Дыхание\n
         Здесь будет длинный текст описания приложения
         Здесь будет длинный текст описания приложения
-        Здесь будет длинный текст описания приложения
-        Здесь будет длинный текст описания приложения
-        Здесь будет длинный текст описания приложения
-        Здесь будет длинный текст описания приложения
+        Здесь будет длинный текст описания приложения\n\n
+        Медитации\n
         Здесь будет длинный текст описания приложения
         Здесь будет длинный текст описания приложения
         Здесь будет длинный текст описания приложения
@@ -40,6 +43,34 @@
         Настройте громкость\n\n
         Сядьте или лягте удобно\n\n
         Расслабьтесь</string>
+
+
+    // ПРЕМИУМ ДОСТУП
+    <string-array name="array_date_premium">
+        <item>12 месяцев</item>
+        <item>6 месяцев</item>
+        <item>1 месяц</item>
+    </string-array>
+    <string-array name="array_price_premium">
+        <item>1590p</item>
+        <item>990p</item>
+        <item>199p</item>
+    </string-array>
+    <string-array name="array_price_premium_old">
+        <item>3850p</item>
+        <item>1640p</item>
+        <item>480p</item>
+    </string-array>
+    <string-array name="array_discount_premium">
+        <item>скидка -40%</item>
+        <item>скидка -30%</item>
+        <item>скидка -20%</item>
+    </string-array>
+    <string-array name="array_discription_premium">
+        <item>16р. в неделю</item>
+        <item>28р. в неделю</item>
+        <item>39р. в неделю</item>
+    </string-array>
 
     // СИСТЕМНЫЕ, ПРЕДУПРЕЖДЕНИЯ, ОШИБКИ
     <string name="title_activity_eyes">EyesActivity</string>
@@ -242,22 +273,40 @@
         <item>Лабиринт</item>
         <item>Огненая сила</item>
         <item>Бездна тишины</item>
+        <item>Реалити-шоу</item>
     </string-array>
     <string-array name="list_meditation_description_array">
-        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
-        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
-        <item>Длинное описание Длинное описание Длинное описание Длинное описание Длинное описание </item>
+        <item>
+            описание описание описание описание описание описание
+            описание описание описание описание описание описание
+        </item>
+        <item>
+            описание описание описание описание описание описание
+            описание описание описание описание описание описание
+        </item>
+        <item>
+            описание описание описание описание описание описание
+            описание описание описание описание описание описание
+        </item>
+        <item>
+            описание описание описание описание описание описание
+            описание описание описание описание описание описание
+        </item>
     </string-array>
 
     <string-array name="list_meditation_audio_array">
         <item>https://pankratov.store/liveAndHealth/mp3/01_meditation_maze.mp3</item>
         <item>https://pankratov.store/liveAndHealth/mp3/02_meditation_fiery_force.mp3</item>
         <item>https://pankratov.store/liveAndHealth/mp3/03_meditation_abyss_of_silence.mp3</item>
+        <item>https://pankratov.store/liveAndHealth/mp3/04_meditation_reality_show.mp3</item>
     </string-array>
     <string-array name="list_meditation_image_array">
         <item>https://pankratov.store/liveAndHealth/img/01_meditation_maze_img.jpg</item>
         <item>https://pankratov.store/liveAndHealth/img/02_meditation_fiery_force_img.jpg</item>
         <item>https://pankratov.store/liveAndHealth/img/03_meditation_abyss_of_silence_img.jpg</item>
+        <item>https://pankratov.store/liveAndHealth/img/04_meditation_reality_show_img.jpg</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

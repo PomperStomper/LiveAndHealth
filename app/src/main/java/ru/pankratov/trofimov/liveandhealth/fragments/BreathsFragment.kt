@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ru.pankratov.trofimov.liveandhealth.MainActivity
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.fragmentFlag
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.models.BreathExerModelList
 import ru.pankratov.trofimov.liveandhealth.adapters.BreathExersiceAdapter
@@ -17,6 +18,7 @@ import ru.pankratov.trofimov.liveandhealth.adapters.BreathExersiceAdapter
 class BreathsFragment : Fragment() {
 
     private lateinit var mTextHead: TextView
+    private lateinit var mBtnAbout: ImageView
     private lateinit var mListBreathsView: RecyclerView
 
     private var breatheslist = arrayListOf<BreathExerModelList>()
@@ -30,6 +32,7 @@ class BreathsFragment : Fragment() {
         val inflatedView = inflater.inflate(R.layout.fragment_breaths, container, false)
 
         mTextHead = inflatedView.findViewById(R.id.textView_head_breath)
+        mBtnAbout = inflatedView.findViewById(R.id.image_about_breath)
         mListBreathsView = inflatedView.findViewById(R.id.listView_breaths)
         // заполняем список
         addListData()
@@ -47,6 +50,10 @@ class BreathsFragment : Fragment() {
         mListBreathsView.setHasFixedSize(true)
         mListBreathsView.adapter = mAdapterBreaths
 
+        mBtnAbout.setOnClickListener {
+            startAboutFragment()
+        }
+
         return inflatedView
     }
 
@@ -56,12 +63,21 @@ class BreathsFragment : Fragment() {
 
         for (i in nameslist.indices) {
             val value = BreathExerModelList()
-            value.image = R.mipmap.ic_btn_pause
+            value.image = R.mipmap.ic_breaths
             value.title = nameslist[i]
             value.discription = discriptionlist[i]
             breatheslist.add(value)
         }
 //        MainActivity.log("list: $breatheslist")
+    }
+
+    private fun startAboutFragment() {
+        fragmentFlag = 2
+        val fragment: Fragment = AboutFragment()
+        val fm = activity?.supportFragmentManager
+        val ft = fm?.beginTransaction()
+        ft?.replace(R.id.fragment_main, fragment)
+        ft?.commit()
     }
 
 }

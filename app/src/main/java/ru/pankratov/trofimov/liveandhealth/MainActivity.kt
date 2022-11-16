@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
@@ -41,6 +42,33 @@ class MainActivity : AppCompatActivity() {
             statusBarColor = Color.TRANSPARENT
         }
 
+        val onBackPressedCallback = object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                when (fragmentFlag) {
+                    0 -> onBackPressedDispatcher.onBackPressed()
+                    1 -> {
+                        fragment = ConditionsFragment()
+                        fragmentAdd()
+                    }
+                    2 -> {
+                        fragment = BreathsFragment()
+                        fragmentAdd()
+                    }
+                    3 -> {
+                        fragment = MeditationsFragment()
+                        fragmentAdd()
+                    }
+                    4 -> {
+                        fragment = SettingsFragment()
+                        fragmentAdd()
+                    }
+                    else -> onBackPressedDispatcher.onBackPressed()
+                }
+                fragmentFlag = 0
+            }
+        }
+        onBackPressedDispatcher.addCallback(onBackPressedCallback)
+
         mFocus = findViewById(R.id.btn_conditions_main)
         mBreath = findViewById(R.id.btn_breaths_main)
         mMeditation = findViewById(R.id.btn_meditations_main)
@@ -70,7 +98,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startFirstFragment() {
-
         fragmentAdd()
 
         val white = ContextCompat.getColor(applicationContext, R.color.white)
@@ -99,11 +126,6 @@ class MainActivity : AppCompatActivity() {
                 changeColor(4)
             }
         }
-        fragmentAdd()
-    }
-
-    private fun returnFragmentSettings() {
-        fragment = SettingsFragment()
         fragmentAdd()
     }
 
@@ -179,16 +201,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        if (fragmentAboutFlag) {
-            returnFragmentSettings()
-            fragmentAboutFlag = false
-        } else super.onBackPressed()
-    }
-
-
     companion object MainObject {
-        var fragmentAboutFlag = false
+        var fragmentFlag = 0
 
         const val TAG = "livetag"
         const val AUDIOFILE_BACKGROUND_TAG = "audioBreathTag"

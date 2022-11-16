@@ -26,6 +26,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Insets
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.AUDIOFILE_BACKGROUND_TAG
 import ru.pankratov.trofimov.liveandhealth.dialogs.StartBreathDialog
 import ru.pankratov.trofimov.liveandhealth.services.AudioService
@@ -82,6 +83,15 @@ class BreathActivity : AppCompatActivity() {
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             statusBarColor = Color.TRANSPARENT
         }
+
+        val onBackPressedCallback = object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                countDownTimer?.cancel()
+                stopAll()
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(onBackPressedCallback)
 
 
         //получаем интент (номер упражнения)
@@ -279,7 +289,7 @@ class BreathActivity : AppCompatActivity() {
             }
             override fun onFinish() {
                 stopAll()
-                screenDialog("Это диалог", "Конец")
+                screenDialog("Цикл закончен", "Конец")
             }
         }
         (countDownTimer as CountDownTimer).start()
@@ -357,13 +367,6 @@ class BreathActivity : AppCompatActivity() {
         super.onDestroy()
         countDownTimer?.cancel()
         stopAll()
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        countDownTimer?.cancel()
-        stopAll()
-        finish()
     }
 
     override fun onPause() {

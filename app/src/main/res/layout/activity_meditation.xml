@@ -145,7 +145,7 @@
                             android:text="@string/play"
                             android:layout_weight="1"
                             android:id="@+id/play_pause"
-                            android:src="@mipmap/ic_btn_pause"
+                            android:src="@mipmap/ic_btn_pause_meditation"
                             android:background="@null"
                             android:contentDescription="@string/app_name"/>
 

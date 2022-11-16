@@ -2,14 +2,16 @@ package ru.pankratov.trofimov.liveandhealth.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.fragmentAboutFlag
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.fragmentFlag
 import ru.pankratov.trofimov.liveandhealth.R
 
 class SettingsFragment : Fragment() {
@@ -18,6 +20,10 @@ class SettingsFragment : Fragment() {
     private lateinit var mReview: TextView
     private lateinit var mSendMail: TextView
     private lateinit var mAbout: TextView
+
+    private lateinit var premium1: TextView
+    private lateinit var premium2: TextView
+    private lateinit var btnPremium: CardView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +36,18 @@ class SettingsFragment : Fragment() {
         mReview = inflatedView.findViewById(R.id.text_review_settings)
         mSendMail = inflatedView.findViewById(R.id.text_send_settings)
         mAbout = inflatedView.findViewById(R.id.text_about_settings)
+        premium1 = inflatedView.findViewById(R.id.text_premium_head)
+        premium2 = inflatedView.findViewById(R.id.text_premium_body)
+        btnPremium = inflatedView.findViewById(R.id.btn_premium)
+
+        // + фирменный шрифт
+        val fontAppZagolovok = Typeface.createFromAsset(context?.assets, "Comfortaa-Bold.ttf")
+        mShare.typeface = fontAppZagolovok
+        mReview.typeface = fontAppZagolovok
+        mSendMail.typeface = fontAppZagolovok
+        mAbout.typeface = fontAppZagolovok
+        premium1.typeface = fontAppZagolovok
+        premium2.typeface = fontAppZagolovok
 
         mShare.setOnClickListener {
             share()
@@ -42,6 +60,9 @@ class SettingsFragment : Fragment() {
         }
         mAbout.setOnClickListener {
             startAboutAppFragment()
+        }
+        btnPremium.setOnClickListener {
+            startPremiumFragment()
         }
 
         return inflatedView
@@ -74,8 +95,17 @@ class SettingsFragment : Fragment() {
     }
 
     private fun startAboutAppFragment() {
-        fragmentAboutFlag = true
-        val fragment: Fragment = AboutAppFragment()
+        fragmentFlag = 4
+        val fragment: Fragment = AboutFragment()
+        val fm = activity?.supportFragmentManager
+        val ft = fm?.beginTransaction()
+        ft?.replace(R.id.fragment_main, fragment)
+        ft?.commit()
+    }
+
+    private fun startPremiumFragment() {
+        fragmentFlag = 4
+        val fragment: Fragment = PremiumFragment()
         val fm = activity?.supportFragmentManager
         val ft = fm?.beginTransaction()
         ft?.replace(R.id.fragment_main, fragment)

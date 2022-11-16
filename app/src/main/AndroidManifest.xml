@@ -11,26 +11,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveAndHealth">
+        <activity
+            android:name=".VideoActivity"
+            android:exported="false" />
+
         <service
             android:name=".services.AudioService"
             android:enabled="true" />
+
         <activity
             android:name=".ConditionActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MeditationActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BreathActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_breath"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.LiveAndHealth.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

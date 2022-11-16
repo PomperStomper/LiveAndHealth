@@ -113,11 +113,9 @@ class ConditionActivity : AppCompatActivity() {
 
         mBtnStartVideo.setOnClickListener {
 //            val video = VideoViewUtils()
-            video.playRawVideo(this, mVideoView, VIDEO[ID])
-        }
-
-        mVideoView.setOnCompletionListener {
-            video.playRawVideo(this, mVideoView, VIDEO[ID])
+//            video.playRawVideo(this, mVideoView, VIDEO[ID])
+            val intentt = Intent(this, VideoActivity::class.java)
+            startActivity(intentt)
         }
 
     }

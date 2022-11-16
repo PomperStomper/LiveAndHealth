@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.fragmentFlag
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.log
 import ru.pankratov.trofimov.liveandhealth.R
 import ru.pankratov.trofimov.liveandhealth.adapters.ConditionExersiceAdapter
@@ -18,6 +20,7 @@ import ru.pankratov.trofimov.liveandhealth.models.CondExerModelList
 class ConditionsFragment : Fragment() {
 
     private lateinit var mTextHead: TextView
+    private lateinit var mBtnAbout: ImageView
     private lateinit var mListConditionsView: RecyclerView
 
     private var conditionslist = arrayListOf<CondExerModelList>()
@@ -31,6 +34,7 @@ class ConditionsFragment : Fragment() {
         val inflatedView = inflater.inflate(R.layout.fragment_conditions, container, false)
 
         mTextHead = inflatedView.findViewById(R.id.textView_head_condition)
+        mBtnAbout = inflatedView.findViewById(R.id.image_about_condition)
         mTextHead.text = getString(R.string.conditions_text)
         // + фирменный шрифт
         val fontAppZagolovok = Typeface.createFromAsset(resources.assets, "Comfortaa-Bold.ttf")
@@ -46,7 +50,20 @@ class ConditionsFragment : Fragment() {
         mListConditionsView.layoutManager = LinearLayoutManager(context)
         mListConditionsView.adapter = mAdapterConditions
 
+        mBtnAbout.setOnClickListener {
+            startAboutFragment()
+        }
+
         return inflatedView
+    }
+
+    private fun startAboutFragment() {
+        fragmentFlag = 1
+        val fragment: Fragment = AboutFragment()
+        val fm = activity?.supportFragmentManager
+        val ft = fm?.beginTransaction()
+        ft?.replace(R.id.fragment_main, fragment)
+        ft?.commit()
     }
 
     private fun addCategories() {

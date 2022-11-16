@@ -8,10 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ru.pankratov.trofimov.liveandhealth.R
 
-class AboutAppFragment : Fragment() {
+class AboutFragment : Fragment() {
 
     private lateinit var mBtnBack: ImageView
     private lateinit var mTextName: TextView
@@ -22,7 +21,7 @@ class AboutAppFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val inflatedView = inflater.inflate(R.layout.fragment_about_app, container, false)
+        val inflatedView = inflater.inflate(R.layout.fragment_about, container, false)
 
         // кнопка назад
         mBtnBack = inflatedView.findViewById(R.id.button_back_about)

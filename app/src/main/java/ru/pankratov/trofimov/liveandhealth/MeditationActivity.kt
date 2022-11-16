@@ -15,6 +15,8 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.widget.*
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
 import androidx.annotation.RequiresApi
 import com.squareup.picasso.Picasso
 import ru.pankratov.trofimov.liveandhealth.MainActivity.MainObject.MEDITATION_TAG
@@ -44,6 +46,18 @@ class MeditationActivity : AppCompatActivity() {
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             statusBarColor = Color.TRANSPARENT
         }
+
+        val onBackPressedCallback = object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                if (mediaPlayer != null) {
+                    mediaPlayer!!.reset()
+                    mediaPlayer!!.release()
+                    mediaPlayer = null
+                }
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(onBackPressedCallback)
 
         // get data from main activity intent
         val intent = intent
@@ -181,12 +195,12 @@ class MeditationActivity : AppCompatActivity() {
         playPause = when (playPause) {
             true -> {
                 play()
-                mBtnPlayPause.setImageResource(R.mipmap.ic_btn_pause)
+                mBtnPlayPause.setImageResource(R.mipmap.ic_btn_pause_meditation)
                 false
             }
             false -> {
                 pause()
-                mBtnPlayPause.setImageResource(R.mipmap.ic_btn_play)
+                mBtnPlayPause.setImageResource(R.mipmap.ic_btn_play_meditation)
                 true
             }
         }
@@ -235,16 +249,6 @@ class MeditationActivity : AppCompatActivity() {
             // backward to starting position
             mediaPlayer!!.seekTo(0)
         }
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        if (mediaPlayer != null) {
-            mediaPlayer!!.reset()
-            mediaPlayer!!.release()
-            mediaPlayer = null
-        }
-        finish()
     }
 
     override fun onResume() {
